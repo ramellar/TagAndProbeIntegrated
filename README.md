@@ -1,33 +1,33 @@
 # TagAndProbe
 Set of tools to evaluate eg/tau trigger performance on T&amp;P, and produce Layer-2 calibrations
 This is based on the following two prior tools:
-1. https://github.com/jonamotta/TauTagAndProbe
-2. https://github.com/jonamotta/TauObjectsOptimization
+1. [TauTagAndProbe](https://github.com/jonamotta/TauTagAndProbe)
+2. [TauObjectsOptimization](https://github.com/jonamotta/TauObjectsOptimization)
 
 ## Install instructions
 ```bash
-cmsrel CMSSW_13_0_0_pre2
-cd CMSSW_13_0_0_pre2/src
+cmsrel CMSSW_13_2_0_pre3
+cd CMSSW_13_2_0_pre3/src
 cmsenv
 git cms-init
 git remote add cms-l1t-offline git@github.com:cms-l1t-offline/cmssw.git
-git fetch cms-l1t-offline l1t-integration-CMSSW_13_0_0_pre2
-git cms-merge-topic -u cms-l1t-offline:l1t-integration-v141-CMSSW_13_0_0_pre2
+git fetch cms-l1t-offline l1t-integration-CMSSW_13_2_0_pre3
+git cms-merge-topic -u cms-l1t-offline:l1t-integration-v164-CMSSW_13_2_0_pre3
 git clone https://github.com/cms-l1t-offline/L1Trigger-L1TCalorimeter.git L1Trigger/L1TCalorimeter/data
 
-git clone git@github.com:jonamotta/TagAndProbeIntegrated.git -b CMSSW_13_0_0_pre2-l1t-integration-v142
+git clone git@github.com:mchiusi/TagAndProbeIntegrated.git -b CMSSW_13_2_0_pre3
 
 git cms-checkdeps -A -a
-
-scram b -j 12
+scram b -j 8
 ```
 
 L1T emulation relevant GlobalTags in CMSSW_12_4_0 are:
 * for run2 data reprocessing '124X_dataRun2_v2'
-* for run2 mc '123X_mcRun2_asymptotic_v1'
-* for run3 mc '130X_mcRun3_2022_realistic_v3'
-* for run3 data, use latest prompt GT here: https://twiki.cern.ch/twiki/bin/view/CMS/LatestOnlineGTs
+* for run2 mc '131X_mcRun2_asymptotic_v2'
+* for run3 mc '131X_mcRun3_2023_realistic_v6'
+* for run3 data, use latest prompt GT [here](https://twiki.cern.ch/twiki/bin/view/CMS/LatestOnlineGTs)
 
+In any case it is better to check what's written [here](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideL1TStage2Instructions)
 
 ## Tool utilization
 To do the optimization two things are needed:
@@ -64,3 +64,4 @@ The optimization is run in several sequential steps:
 * Evaluation of the L1 rate
 
 Due to the package's lack of forward-compatibility with CMSSW, the optimzation is run into CMSSW_11_0_2.
+Check [this](https://twiki.cern.ch/twiki/bin/view/CMSPublic/FWMultithreadedFrameworkModuleTypes#EDFilters) link in order to keep track of the lastest updates in CMSSW.
