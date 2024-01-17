@@ -13,7 +13,7 @@
 #include <bitset>
 
 
-#include "FWCore/Framework/interface/EDAnalyzer.h"
+#include "FWCore/Framework/interface/stream/EDAnalyzer.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include <FWCore/Framework/interface/Frameworkfwd.h>
 #include <FWCore/Framework/interface/Event.h>
@@ -62,7 +62,7 @@
   ██████  ███████  ██████ ███████ ██   ██ ██   ██ ██   ██    ██    ██  ██████  ██   ████
 */
 
-class ZeroBias : public edm::EDAnalyzer {
+class ZeroBias : public edm::stream::EDAnalyzer<> {
 public:
   /// Constructor
   explicit ZeroBias(const edm::ParameterSet&);
