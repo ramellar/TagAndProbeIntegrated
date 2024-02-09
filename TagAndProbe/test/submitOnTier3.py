@@ -88,7 +88,6 @@ for idx, block in enumerate(fileblocks):
 
     if jobtype == "noTagAndProbe":
         cmsRun = "cmsRun "+options.objType+"_noTagAndProbe.py maxEvents=-1 inputFiles_load="+outListName+" outputFile="+outRootName+" globalTag="+globalTag+" >& "+outLogName
-
     if jobtype == "noTagAndProbeMT":
         cmsRun = "cmsRun "+options.objType+"_noTagAndProbe_multipleTaus.py maxEvents=-1 inputFiles_load="+outListName+" outputFile="+outRootName+" globalTag="+globalTag+" >& "+outLogName
 

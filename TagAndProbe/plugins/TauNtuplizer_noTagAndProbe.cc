@@ -13,7 +13,7 @@
 #include <bitset>
 
 
-#include "FWCore/Framework/interface/stream/EDAnalyzer.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include <FWCore/Framework/interface/Frameworkfwd.h>
 #include <FWCore/Framework/interface/Event.h>
@@ -60,7 +60,7 @@
   ██████  ███████  ██████ ███████ ██   ██ ██   ██ ██   ██    ██    ██  ██████  ██   ████
 */
 
-class TauNtuplizer_noTagAndProbe : public edm::stream::EDAnalyzer<> {
+class TauNtuplizer_noTagAndProbe : public edm::one::EDAnalyzer<> {
 public:
   /// Constructor
   explicit TauNtuplizer_noTagAndProbe(const edm::ParameterSet&);
@@ -614,7 +614,7 @@ void TauNtuplizer_noTagAndProbe::analyze(const edm::Event& iEvent, const edm::Ev
 	    }
 	  const l1t::Tau& l1tEmuTau = *bx0EmuTauIt;
 	    
-	  cout<<"Emul Tau, pT = "<<l1tEmuTau.pt()<<", eta = "<<l1tEmuTau.eta()<<", phi = "<<l1tEmuTau.phi()<<endl;
+	  // cout<<"Emul Tau, pT = "<<l1tEmuTau.pt()<<", eta = "<<l1tEmuTau.eta()<<", phi = "<<l1tEmuTau.phi()<<endl;
 	    
 	  if (dR < minDR) //Uncomment for new match algo
 	    {
@@ -653,7 +653,7 @@ void TauNtuplizer_noTagAndProbe::analyze(const edm::Event& iEvent, const edm::Ev
   //if (this -> _foundJet > 1 ) std::cout << "deltaPt: " << deltaPt << " con foundJet " << this -> _foundJet << " hltPt " << this -> _hltPt << endl;
 
   this -> _tauTriggerBits = this -> _tauTriggerBitSet.to_ulong();
-  //std::cout << "++++++++++ FILL ++++++++++" << std::endl;
+  // std::cout << "++++++++++ FILL ++++++++++" << std::endl;
 
   const edm::View<pat::Jet>* jets = jetHandle.product();
   

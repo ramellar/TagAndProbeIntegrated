@@ -19,7 +19,7 @@ source /opt/exp_soft/cms/t3/t3setup
 ################################ DYToLL MC productions #################################
 ########################################################################################
 
-# MINIAOD -----------------------------------------------------------------------------------
+## MINIAOD -----------------------------------------------------------------------------------
 python submitOnTier3.py --inFileList MC_for_taus/DYTo2L_MLL-50_TuneCP5_13p6TeV_pythia8__Run3Winter24_MINIAOD.txt \
                         --outFolder Run3_2024/2024W-MC_caloParams_2023_v0_4_cfi/DYTo2L_MLL-50_TuneCP5_13p6TeV_pythia8__Run3Winter24_MINIAOD \
                         --objType tau \
@@ -48,71 +48,27 @@ python submitOnTier3.py --inFileList MC_for_taus/DYTo2L_MLL-50_TuneCP5_13p6TeV_p
 ##############################################################################################
 
 ## MINIAOD -----------------------------------------------------------------------------------
-# python submitOnTier3.py --inFileList MC_for_taus/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8__Run3Winter23MiniAOD-126X_mcRun3_2023_forPU65_v1-v2__MINIAODSIM.txt \
-#                         --outFolder Run3preparation_2023/2023_03_13_optimizationV1/VBFHToTauTau_126X_mcRun3_2023_forPU65_MINIAOD_withUnpacked \
-#                         --objType tau \
-#                         --jobType noTagAndProbe \
-#                         --inJson None \
-#                         --nJobs 25 \
-#                         --run Run3 \
-#                         --queue short \
-#                         --globalTag 130X_mcRun3_2022_realistic_v2 \
-#                         --caloParams None \
-#                         --no_exec
-
-# python submitOnTier3.py --inFileList MC_for_taus/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8__Run3Summer22MiniAODv3-124X_mcRun3_2022_realistic_v12-v3__MINIAODSIM.txt \
-#                         --outFolder Run3preparation_2023/2023_03_04_optimizationV0/VBFHToTauTau_124X_mcRun3_2022_realistic_MINIAOD_withUnpacked \
-#                         --objType tau \
-#                         --jobType noTagAndProbe \
-#                         --inJson None \
-#                         --nJobs 25 \
-#                         --run Run3 \
-#                         --queue short \
-#                         --globalTag 130X_mcRun3_2022_realistic_v2 \
-#                         --caloParams None
-
-# python submitOnTier3.py --inFileList MC_for_taus/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8__Run3Summer22EEMiniAODv3-Poisson70KeepRAW_124X_mcRun3_2022_realistic_postEE_v1-v2__MINIAODSIM.txt \
-#                         --outFolder Run3preparation_2023/2023_03_04_optimizationV0/VBFHToTauTau_Poisson70KeepRAW_124X_mcRun3_2022_realistic_postEE_MINIAOD_withUnpacked \
-#                         --objType tau \
-#                         --jobType noTagAndProbe \
-#                         --inJson None \
-#                         --nJobs 25 \
-#                         --run Run3 \
-#                         --queue short \
-#                         --globalTag 130X_mcRun3_2022_realistic_v2 \
-#                         --caloParams None
-
+python submitOnTier3.py --inFileList MC_for_taus/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8__Run3Winter24_MINIAOD.txt \
+                        --outFolder Run3_2024/2024W-MC_caloParams_2023_v0_4_cfi/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8__Run3Winter24_MINIAOD \
+                        --objType tau \
+                        --jobType noTagAndProbe \
+                        --inJson None \
+                        --nJobs 50 \
+                        --run Run3 \
+                        --queue short \
+                        --globalTag 140X_mcRun3_2023_realistic_v1 \
+                        --caloParams None
 
 ## RAW -----------------------------------------------------------------------------------
-# python submitOnTier3.py --inFileList MC_for_taus/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8__Run3Winter23Digi-126X_mcRun3_2023_forPU65_v1-v2__GEN-SIM-RAW.txt \
-#                         --outFolder Run3preparation_2023/2023_03_21_optimizationVtest/VBFHToTauTau_126X_mcRun3_2023_forPU65_RAW_ZS0p5 \
-#                         --jobType reEmulL1_MC \
-#                         --inJson None \
-#                         --nJobs 175 \
-#                         --run Run3 \
-#                         --queue short \
-#                         --globalTag 130X_mcRun3_2022_realistic_v2 \
-#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2022_v0_6_modZS0p5_cfi
-
-# python submitOnTier3.py --inFileList MC_for_taus/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8__Run3Summer22DRPremix-124X_mcRun3_2022_realistic_v12-v3__GEN-SIM-RAW.txt \
-#                         --outFolder Run3preparation_2023/2023_03_04_optimizationV0/VBFHToTauTau_124X_mcRun3_2022_realistic_RAW \
-#                         --jobType reEmulL1_MC \
-#                         --inJson None \
-#                         --nJobs 175 \
-#                         --run Run3 \
-#                         --queue short \
-#                         --globalTag 130X_mcRun3_2022_realistic_v2 \
-#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2022_v0_6_cfi
-
-# python submitOnTier3.py --inFileList MC_for_taus/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8__Run3Summer22EEDR-Poisson70KeepRAW_124X_mcRun3_2022_realistic_postEE_v1-v2__GEN-SIM-RAW.txt \
-#                         --outFolder Run3preparation_2023/2023_03_04_optimizationV0/VBFHToTauTau_Poisson70KeepRAW_124X_mcRun3_2022_realistic_postEE_RAW\
-#                         --jobType reEmulL1_MC \
-#                         --inJson None \
-#                         --nJobs 175 \
-#                         --run Run3 \
-#                         --queue short \
-#                         --globalTag 130X_mcRun3_2022_realistic_v2 \
-#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2022_v0_6_cfi
+python submitOnTier3.py --inFileList MC_for_taus/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8__Run3Winter24_GEN-SIM-RAW.txt \
+                        --outFolder Run3_2024/2024W-MC_caloParams_2023_v0_4_cfi/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8__Run3Winter24_GEN-SIM-RAW \
+                        --jobType reEmulL1_MC \
+                        --inJson None \
+                        --nJobs 500 \
+                        --run Run3 \
+                        --queue short \
+                        --globalTag 140X_mcRun3_2023_realistic_v1 \
+                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
 
 
 #################################################################################################
@@ -120,73 +76,27 @@ python submitOnTier3.py --inFileList MC_for_taus/DYTo2L_MLL-50_TuneCP5_13p6TeV_p
 #################################################################################################
 
 ## MINIAOD -----------------------------------------------------------------------------------
-# python submitOnTier3.py --inFileList MC_for_taus/GluGluHToTauTau_M-125_TuneCP5_13p6TeV_powheg-pythia8__Run3Winter23MiniAOD-126X_mcRun3_2023_forPU65_v1-v2__MINIAODSIM.txt \
-#                         --outFolder Run3preparation_2023/2023_03_13_optimizationV1/GluGluHToTauTau_126X_mcRun3_2023_forPU65_MINIAOD_withUnpacked \
-#                         --objType tau \
-#                         --jobType noTagAndProbe \
-#                         --inJson None \
-#                         --nJobs 25 \
-#                         --run Run3 \
-#                         --queue short \
-#                         --globalTag 130X_mcRun3_2022_realistic_v2 \
-#                         --caloParams None \
-#                         --no_exec
-
-# python submitOnTier3.py --inFileList MC_for_taus/GluGluHToTauTau_M-125_TuneCP5_13p6TeV_powheg-pythia8__Run3Summer22MiniAODv3-124X_mcRun3_2022_realistic_v12-v3__MINIAODSIM.txt \
-#                         --outFolder Run3preparation_2023/2023_03_04_optimizationV0/GluGluHToTauTau_124X_mcRun3_2022_realistic_MINIAOD_withUnpacked \
-#                         --objType tau \
-#                         --jobType noTagAndProbe \
-#                         --inJson None \
-#                         --nJobs 25 \
-#                         --run Run3 \
-#                         --queue short \
-#                         --globalTag 130X_mcRun3_2022_realistic_v2 \
-#                         --caloParams None
-
-# python submitOnTier3.py --inFileList MC_for_taus/GluGluHToTauTau_M-125_TuneCP5_13p6TeV_powheg-pythia8__Run3Summer22EEMiniAODv3-Poisson70KeepRAW_124X_mcRun3_2022_realistic_postEE_v1-v3__MINIAODSIM.txt \
-#                         --outFolder Run3preparation_2023/2023_03_04_optimizationV0/GluGluHToTauTau_Poisson70KeepRAW_124X_mcRun3_2022_realistic_postEE_MINIAOD_withUnpacked \
-#                         --objType tau \
-#                         --jobType noTagAndProbe \
-#                         --inJson None \
-#                         --nJobs 25 \
-#                         --run Run3 \
-#                         --queue short \
-#                         --globalTag 130X_mcRun3_2022_realistic_v2 \
-#                         --caloParams None
-
+python submitOnTier3.py --inFileList MC_for_taus/GluGluHToTauTau_M-125_TuneCP5_13p6TeV_powheg-pythia8__Run3Winter24_MINIAOD.txt \
+                        --outFolder Run3_2024/2024W-MC_caloParams_2023_v0_4_cfi/GluGluHToTauTau_M-125_TuneCP5_13p6TeV_powheg-pythia8__Run3Winter24_MINIAOD \
+                        --objType tau \
+                        --jobType noTagAndProbe \
+                        --inJson None \
+                        --nJobs 50 \
+                        --run Run3 \
+                        --queue short \
+                        --globalTag 140X_mcRun3_2023_realistic_v1 \
+                        --caloParams None
 
 ## RAW -----------------------------------------------------------------------------------
-# python submitOnTier3.py --inFileList MC_for_taus/GluGluHToTauTau_M-125_TuneCP5_13p6TeV_powheg-pythia8__Run3Winter23Digi-126X_mcRun3_2023_forPU65_v1-v2__GEN-SIM-RAW.txt \
-#                         --outFolder Run3preparation_2023/2023_03_21_optimizationVtest/GluGluHToTauTau_126X_mcRun3_2023_forPU65_RAW_ZS0p5 \
-#                         --jobType reEmulL1_MC \
-#                         --inJson None \
-#                         --nJobs 175 \
-#                         --run Run3 \
-#                         --queue short \
-#                         --globalTag 130X_mcRun3_2022_realistic_v2 \
-#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2022_v0_6_modZS0p5_cfi
-
-# python submitOnTier3.py --inFileList MC_for_taus/GluGluHToTauTau_M-125_TuneCP5_13p6TeV_powheg-pythia8__Run3Summer22DRPremix-124X_mcRun3_2022_realistic_v12-v3__GEN-SIM-RAW.txt \
-#                         --outFolder Run3preparation_2023/2023_03_04_optimizationV0/GluGluHToTauTau_124X_mcRun3_2022_realistic_RAW \
-#                         --jobType reEmulL1_MC \
-#                         --inJson None \
-#                         --nJobs 175 \
-#                         --run Run3 \
-#                         --queue short \
-#                         --globalTag 130X_mcRun3_2022_realistic_v2 \
-#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2022_v0_6_cfi
-
-# python submitOnTier3.py --inFileList MC_for_taus/GluGluHToTauTau_M-125_TuneCP5_13p6TeV_powheg-pythia8__Run3Summer22EEDR-Poisson70KeepRAW_124X_mcRun3_2022_realistic_postEE_v1-v3__GEN-SIM-RAW.txt \
-#                         --outFolder Run3preparation_2023/2023_03_04_optimizationV0/GluGluHToTauTau_Poisson70KeepRAW_124X_mcRun3_2022_realistic_postEE_RAW \
-#                         --jobType reEmulL1_MC \
-#                         --inJson None \
-#                         --nJobs 175 \
-#                         --run Run3 \
-#                         --queue short \
-#                         --globalTag 130X_mcRun3_2022_realistic_v2 \
-#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2022_v0_6_cfi
-
-
+python submitOnTier3.py --inFileList MC_for_taus/GluGluHToTauTau_M-125_TuneCP5_13p6TeV_powheg-pythia8__Run3Winter24_GEN-SIM-RAW.txt \
+                        --outFolder Run3_2024/2024W-MC_caloParams_2023_v0_4_cfi/GluGluHToTauTau_M-125_TuneCP5_13p6TeV_powheg-pythia8__Run3Winter24_GEN-SIM-RAW \
+                        --jobType reEmulL1_MC \
+                        --inJson None \
+                        --nJobs 500 \
+                        --run Run3 \
+                        --queue short \
+                        --globalTag 140X_mcRun3_2023_realistic_v1 \
+                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
 
 
 ##############################################################################################

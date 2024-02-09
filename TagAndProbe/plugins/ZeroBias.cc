@@ -13,7 +13,7 @@
 #include <bitset>
 
 
-#include "FWCore/Framework/interface/stream/EDAnalyzer.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include <FWCore/Framework/interface/Frameworkfwd.h>
 #include <FWCore/Framework/interface/Event.h>
@@ -62,7 +62,7 @@
   ██████  ███████  ██████ ███████ ██   ██ ██   ██ ██   ██    ██    ██  ██████  ██   ████
 */
 
-class ZeroBias : public edm::stream::EDAnalyzer<> {
+class ZeroBias : public edm::one::EDAnalyzer<> {
 public:
   /// Constructor
   explicit ZeroBias(const edm::ParameterSet&);
@@ -387,18 +387,18 @@ void ZeroBias::beginRun(edm::Run const& iRun, edm::EventSetup const& iSetup)
 
 
     const edm::TriggerNames::Strings& triggerNames = this -> _hltConfig.triggerNames();
-    std::cout << " ===== LOOKING FOR THE PATH INDEXES =====" << std::endl;
+    // std::cout << " ===== LOOKING FOR THE PATH INDEXES =====" << std::endl;
     for (tParameterSet& parameter : this -> _parameters){
         const std::string& hltPath = parameter.hltPath;
         bool found = false;
         for(unsigned int j=0; j < triggerNames.size(); j++)
         {
-    std::cout << triggerNames[j] << std::endl;
+    // std::cout << triggerNames[j] << std::endl;
             if (triggerNames[j].find(hltPath) != std::string::npos) {
                 found = true;
                 parameter.hltPathIndex = j;
 
-                std::cout << "### FOUND AT INDEX #" << j << " --> " << triggerNames[j] << std::endl;
+                // std::cout << "### FOUND AT INDEX #" << j << " --> " << triggerNames[j] << std::endl;
             }
         }
         if (!found) parameter.hltPathIndex = -1;
@@ -420,12 +420,10 @@ void ZeroBias::beginRun(edm::Run const& iRun, edm::EventSetup const& iSetup)
   _indexOfPath.push_back(j);
   _foundPaths.push_back(pathName);
   
-  cout << j << " - TTT: " << pathName << endl;
+  //    cout << j << " - TTT: " << pathName << endl;
   //    edm::LogInfo("AnalyzeRates")<<"Added path "<<pathName<<" to foundPaths";
       } 
     }
-
-
 }
 
 void ZeroBias::Initialize() {
@@ -813,6 +811,7 @@ void ZeroBias::endRun(edm::Run const& iRun, edm::EventSetup const& iSetup)
 void ZeroBias::analyze(const edm::Event& iEvent, const edm::EventSetup& eSetup)
 {
   this -> Initialize();
+  cout << "Event" << endl;
 
   _indexevents = iEvent.id().event();
   _runNumber = iEvent.id().run();
