@@ -811,7 +811,6 @@ void ZeroBias::endRun(edm::Run const& iRun, edm::EventSetup const& iSetup)
 void ZeroBias::analyze(const edm::Event& iEvent, const edm::EventSetup& eSetup)
 {
   this -> Initialize();
-  cout << "Event" << endl;
 
   _indexevents = iEvent.id().event();
   _runNumber = iEvent.id().run();

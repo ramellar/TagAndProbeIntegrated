@@ -6,28 +6,30 @@ This is based on the following two prior tools:
 
 ## Install instructions
 ```bash
-cmsrel CMSSW_13_2_0_pre3
-cd CMSSW_13_2_0_pre3/src
+cmsrel CMSSW_13_3_0
+cd CMSSW_13_3_0/src
 cmsenv
 git cms-init
-git remote add cms-l1t-offline git@github.com:cms-l1t-offline/cmssw.git
-git fetch cms-l1t-offline l1t-integration-CMSSW_13_2_0_pre3
-git cms-merge-topic -u cms-l1t-offline:l1t-integration-v164-CMSSW_13_2_0_pre3
+git cms-addpkg L1Trigger/L1TCalorimeter
+git cms-addpkg L1Trigger/L1TNtuples
+git cms-addpkg L1Trigger/Configuration
+git cms-addpkg L1Trigger/L1TGlobal
+git cms-addpkg L1Trigger/L1TCommon
+git cms-addpkg L1Trigger/L1TZDC
+mkdir L1Trigger/L1TZDC/data
+cd L1Trigger/L1TZDC/data
+wget https://raw.githubusercontent.com/cms-data/L1Trigger-L1TCalorimeter/master/zdcLUT_HI_v0_1.txt
+cd -
 git clone https://github.com/cms-l1t-offline/L1Trigger-L1TCalorimeter.git L1Trigger/L1TCalorimeter/data
 
-git clone git@github.com:mchiusi/TagAndProbeIntegrated.git -b CMSSW_13_2_0_pre3
+git clone git@github.com:mchiusi/TagAndProbeIntegrated.git -b CMSSW_13_3_0
 
 git cms-checkdeps -A -a
 scram b -j 8
 ```
 
-L1T emulation relevant GlobalTags in CMSSW_12_4_0 are:
-* for run2 data reprocessing '124X_dataRun2_v2'
-* for run2 mc '131X_mcRun2_asymptotic_v2'
-* for run3 mc '131X_mcRun3_2023_realistic_v6'
+L1T emulation relevant GlobalTags in CMSSW_13_3_0 are stored [here](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideL1TStage2Instructions). 
 * for run3 data, use latest prompt GT [here](https://twiki.cern.ch/twiki/bin/view/CMS/LatestOnlineGTs)
-
-In any case it is better to check what's written [here](https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideL1TStage2Instructions)
 
 ## Tool utilization
 To do the optimization two things are needed:

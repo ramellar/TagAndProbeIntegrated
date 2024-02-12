@@ -95,8 +95,8 @@ for idx, block in enumerate(fileblocks):
         cmsRun = "cmsRun "+options.objType+"_noTagAndProbe_AOD.py maxEvents=-1 inputFiles_load="+outListName+" outputFile="+outRootName+" globalTag="+globalTag+" >& "+outLogName
 
     if jobtype == "tagAndProbe":
-        if run == "Run3": cmsRun = "cmsRun "+options.objType+"_tagAndProbeRun3.py maxEvents=-1 inputFiles_load="+outListName+" outputFile="+outRootName+" JSONfile="+JSONfile+" caloParams="+caloParams+" globalTag="+globalTag+" >& "+outLogName
-        if run == "Run2": cmsRun = "cmsRun "+options.objType+"_tagAndProbeRun2.py maxEvents=-1 inputFiles_load="+outListName+" outputFile="+outRootName+" JSONfile="+JSONfile+" caloParams="+caloParams+" globalTag="+globalTag+" >& "+outLogName
+        if run == "Run3": cmsRun = "cmsRun "+options.objType+"_tagAndProbeRun3.py maxEvents=-1 inputFiles_load="+outListName+" outputFile="+outRootName+" JSONfile="+JSONfile+" globalTag="+globalTag+" caloParams="+caloParams+" >& "+outLogName
+        if run == "Run2": cmsRun = "cmsRun "+options.objType+"_tagAndProbeRun2.py maxEvents=-1 inputFiles_load="+outListName+" outputFile="+outRootName+" JSONfile="+JSONfile+" globalTag="+globalTag+" >& "+outLogName
 
     if jobtype == "reEmulL1_zeroBias":
         cmsRun = "cmsRun reEmulL1_zeroBias.py maxEvents=-1 inputFiles_load="+outListName+" outputFile="+outRootName+" caloParams="+caloParams+" globalTag="+globalTag+" allBXs="+allBXs+" >& "+outLogName
