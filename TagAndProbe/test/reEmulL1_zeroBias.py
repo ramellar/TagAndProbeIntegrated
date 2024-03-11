@@ -88,8 +88,26 @@ process.options = cms.untracked.PSet(
     wantSummary = cms.untracked.bool(True)
 )
 
-process.load('EventFilter.L1TRawToDigi.caloStage2Digis_cfi')
-process.caloStage2Digis.InputLabel = cms.InputTag('rawDataCollector')
+# ################# Activating the latest (02/24) HCAL response corrections ############
+# CONDDIR="/grid_mnt/vol_home/llr/cms/mchiusi/Run3preparation/Run3_2024/CMSSW_13_3_0/src/TagAndProbeIntegrated/HCAL_corr"
+# 
+# process.load('EventFilter.L1TRawToDigi.caloStage2Digis_cfi')
+# process.caloStage2Digis.InputLabel = cms.InputTag('rawDataCollector')
+# 
+# process.es_prefer = cms.ESPrefer('HcalTextCalibrations','es_ascii')
+# process.es_ascii = cms.ESSource('HcalTextCalibrations',
+#    input = cms.VPSet(
+#       cms.PSet(
+#          object = cms.string('RespCorrs'),
+# 	 file   = cms.FileInPath(CONDDIR+'/RespCorrs/HcalRespCorrs_2023_v3.0_data.txt')
+#       ),
+#       cms.PSet(
+#          object = cms.string('Gains'),
+#          file   = cms.FileInPath(CONDDIR+'/Gains/HcalGains_2023_v2.0_data.txt')
+#       ),
+#    )
+# )
+# #######################################################################################
 
 process.p = cms.Path (
     process.RawToDigi +
