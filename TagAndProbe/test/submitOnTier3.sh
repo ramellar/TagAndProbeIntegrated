@@ -14,6 +14,16 @@ source /opt/exp_soft/cms/t3/t3setup
 ##                         --caloParams \
 ##                         --globalTag
 
+python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024B-PromptReco-v1_MINIAOD.txt \
+                        --outFolder Run3_2024/Muon_Run2024B-v1_RAW_379243_252_253/ntuples \
+                        --objType tau \
+                        --jobType tagAndProbe \
+                        --inJson Collisions24_13p6TeV_378981_379253_DCSOnly_TkPx.json \
+                        --nJobs 100 \
+                        --run Run3 \
+                        --queue short \
+                        --globalTag 140X_dataRun3_Prompt_v2 \
+                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
 
 # ########################################################################################
 # ################################ DYToLL MC productions #################################
@@ -103,27 +113,27 @@ source /opt/exp_soft/cms/t3/t3setup
 ############################### SingleMuon 13TeV - ERA 2023D #################################
 ##############################################################################################
 
-python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023D-v1_RAW.txt \
-                        --outFolder Run3_2024/Muon_Run2023D/Muon_Run2023D-v1_RAW \
-                        --objType tau \
-                        --jobType reEmulL1_zeroBias \
-                        --inJson Cert_Collisions2023_eraD_369803_370790_Golden.json \
-                        --nJobs 5000 \
-                        --queue short \
-                        --globalTag 133X_dataRun3_Prompt_v2 \
-                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
-
-python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023D-PromptReco-v1_MINIAOD.txt \
-                        --outFolder Run3_2024/Muon_Run2023D/Muon_Run2023D-PromptReco-v1_MINIAOD \
-                        --objType tau \
-                        --jobType tagAndProbe \
-                        --inJson Cert_Collisions2023_eraD_369803_370790_Golden.json \
-                        --nJobs 150 \
-                        --run Run3 \
-                        --queue short \
-                        --globalTag 133X_dataRun3_Prompt_v2 \
-                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
-
+# python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023D-v1_RAW.txt \
+#                         --outFolder Run3_2024/Muon_Run2023D/Muon_Run2023D-v1_RAW \
+#                         --objType tau \
+#                         --jobType reEmulL1_zeroBias \
+#                         --inJson Cert_Collisions2023_eraD_369803_370790_Golden.json \
+#                         --nJobs 5000 \
+#                         --queue short \
+#                         --globalTag 133X_dataRun3_Prompt_v2 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
+# 
+# python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023D-PromptReco-v1_MINIAOD.txt \
+#                         --outFolder Run3_2024/Muon_Run2023D/Muon_Run2023D-PromptReco-v1_MINIAOD \
+#                         --objType tau \
+#                         --jobType tagAndProbe \
+#                         --inJson Cert_Collisions2023_eraD_369803_370790_Golden.json \
+#                         --nJobs 150 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 133X_dataRun3_Prompt_v2 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
+# 
 ##############################################################################################
 ############################### SingleMuon 13TeV - single runs ###############################
 ##############################################################################################

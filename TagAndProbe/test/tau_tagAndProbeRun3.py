@@ -21,7 +21,7 @@ options.register ('caloParams',
                   VarParsing.VarParsing.varType.string,          # string, int, or float
                   "which caloParams to use?")
 options.register ('globalTag',
-                  "", # default value
+                  "140X_dataRun3_v2", # default value
                   VarParsing.VarParsing.multiplicity.singleton, # singleton or list
                   VarParsing.VarParsing.varType.string,          # string, int, or float
                   "which globalTag to use?")
@@ -41,13 +41,13 @@ process.load('Configuration.StandardSequences.RawToDigi_Data_cff')
 process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('TagAndProbeIntegrated.TagAndProbe.tau_tagAndProbeRun3_cff')
-process.load(options.caloParams)
+#process.load(options.caloParams)
 
 process.GlobalTag.globaltag = options.globalTag
 
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
-        '/store/data/Run2016H/SingleMuon/MINIAOD/PromptReco-v2/000/282/092/00000/DE499C8E-1B8B-E611-8C93-02163E014207.root'
+        '/store/data/Run2024B/Muon0/MINIAOD/PromptReco-v1/000/379/253/00000/6dab757f-5a09-4e35-8a0f-1ba62ba9c20c.root'
     ),
 )
 

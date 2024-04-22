@@ -231,7 +231,7 @@ _hltL2CaloJet_ForIsoPix_IsoTag(consumes<reco::JetTagCollection>   (iConfig.getPa
 
     _isMC = iConfig.getParameter<bool>("isMC");
 
-    _hltPrescale = new HLTPrescaleProvider(iConfig, consumesCollector(), *this);
+    //_hltPrescale = new HLTPrescaleProvider(iConfig, consumesCollector(), *this);
     
     _treeName = iConfig.getParameter<std::string>("treeName");
     _processName = iConfig.getParameter<edm::InputTag>("triggerResultsLabel");
@@ -275,7 +275,7 @@ _hltL2CaloJet_ForIsoPix_IsoTag(consumes<reco::JetTagCollection>   (iConfig.getPa
 
 TauNtuplizerRun3::~TauNtuplizerRun3()
 {
-    delete _hltPrescale;
+   // delete _hltPrescale;
 }
 
 void TauNtuplizerRun3::beginRun(edm::Run const& iRun, edm::EventSetup const& iSetup)
@@ -287,10 +287,10 @@ void TauNtuplizerRun3::beginRun(edm::Run const& iRun, edm::EventSetup const& iSe
         return;
     }
 
-    if(!_hltPrescale->init(iRun, iSetup, _processName.process(), changedConfig)){
-        edm::LogError("HLTMatchingFilter") << "Initialization of HLTPrescaleProvider failed!!";
-        return;
-    }
+ //   if(!_hltPrescale->init(iRun, iSetup, _processName.process(), changedConfig)){
+ //       edm::LogError("HLTMatchingFilter") << "Initialization of HLTPrescaleProvider failed!!";
+ //       return;
+ //   }
 
     const edm::TriggerNames::Strings& triggerNames = _hltConfig.triggerNames();
     std::cout << " ===== LOOKING FOR THE PATH INDEXES =====" << std::endl;
@@ -549,12 +549,11 @@ void TauNtuplizerRun3::analyze(const edm::Event& iEvent, const edm::EventSetup& 
     _indexevents = iEvent.id().event();
     _runNumber = iEvent.id().run();
     _lumi = iEvent.luminosityBlock();
-    if(!_isMC) _PS_column = _hltPrescale->prescaleSet(iEvent,eSetup);
+    //if(!_isMC) _PS_column = _hltPrescale->prescaleSet(iEvent,eSetup);
 
     edm::Handle<GenEventInfoProduct> genEvt;
     try {iEvent.getByToken(_genTag, genEvt);}  catch (...) {;}
     if(genEvt.isValid()) _MC_weight = genEvt->weight();
-
     // search for the tag in the event
     edm::Handle<edm::View<pat::GenericParticle> > genPartHandle;
     edm::Handle<pat::MuonRefVector> muonHandle;
@@ -599,11 +598,12 @@ void TauNtuplizerRun3::analyze(const edm::Event& iEvent, const edm::EventSetup& 
 
     // loop over the hlt trigger objects to do tag and probe
     bool foundMuTrigger = false;
+
+
     for (pat::TriggerObjectStandAlone  obj : *triggerObjects)
     {
         obj.unpackPathNames(names);
         const edm::TriggerNames::Strings& triggerNames = names.triggerNames();
-
         // check if the trigger object is a muon trigger object
         if(obj.hasTriggerObjectType(trigger::TriggerMuon))
         {
@@ -614,7 +614,8 @@ void TauNtuplizerRun3::analyze(const edm::Event& iEvent, const edm::EventSetup& 
                 // check that the trigger object has the wanted TAG path (loops over TAG paths specified in the cfg file)
                 for (const tParameterSet& parameter : _parameters_Tag)
                 {
-                    if ((parameter.hltPathIndex >= 0)&&(obj.hasPathName(triggerNames[parameter.hltPathIndex], true, false))) foundMuTrigger = true; //set tag existence flag
+                    if (obj.hasPathName(parameter.hltPath.data(), true, false)) foundMuTrigger=true;
+                    //if ((parameter.hltPathIndex >= 0)&&(obj.hasPathName(triggerNames[parameter.hltPathIndex], true, false))) foundMuTrigger = true; //set tag existence flag
                 }
             }
         }
@@ -633,8 +634,9 @@ void TauNtuplizerRun3::analyze(const edm::Event& iEvent, const edm::EventSetup& 
             bool foundTrigger = false;
             for (const tParameterSet& parameter : _parameters)
             {
-                if ((parameter.hltPathIndex >= 0)&&(obj.hasPathName(triggerNames[parameter.hltPathIndex], true, false)))
                 {
+                //if ((parameter.hltPathIndex >= 0)&&(obj.hasPathName(triggerNames[parameter.hltPathIndex], true, false)))
+                if (obj.hasPathName(parameter.hltPath.data(), true, false))
                     foundTrigger = true;
 
                     // check filter list for the taus and store if satisfied (as specified in the cfg file)
@@ -829,7 +831,7 @@ void TauNtuplizerRun3::analyze(const edm::Event& iEvent, const edm::EventSetup& 
         const edm::View<pat::GenericParticle>* genparts = genPartHandle.product();
         _tau_genindex = this->GenIndex(tau,genparts);
     }
-
+    std::cout<<"     >  Filling NTUPLE : "<<foundMuTrigger<<"\n";
     // store only if the event was triggered by the TAG paths required
     if(foundMuTrigger) _tree -> Fill();
 
