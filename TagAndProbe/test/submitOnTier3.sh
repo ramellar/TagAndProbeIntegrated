@@ -14,17 +14,55 @@ source /opt/exp_soft/cms/t3/t3setup
 ##                         --caloParams \
 ##                         --globalTag
 
-python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024B-PromptReco-v1_MINIAOD.txt \
-                        --outFolder Run3_2024/Muon_Run2024B-v1_RAW_379243_252_253/ntuples \
+## 2024 checking unpacked ###
+
+# python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024B-PromptReco-v1_MINIAOD.txt \
+#                         --outFolder Run3_2024/unpacked_2024/Muon_Run2024B-v1_MINIAOD/ntuples \
+#                         --objType tau \
+#                         --jobType tagAndProbe \
+#                         --inJson Collisions24_13p6TeV_378981_379774_DCSOnly_TkPx.json \
+#                         --nJobs 1000 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 140X_dataRun3_Prompt_v2 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
+# 
+# python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024C-PromptReco-v1_MINIAOD.txt \
+#                         --outFolder Run3_2024/unpacked_2024/Muon_Run2024C-v1_MINIAOD/ntuples \
+#                         --objType tau \
+#                         --jobType tagAndProbe \
+#                         --inJson Collisions24_13p6TeV_378981_380384_DCSOnly_TkPx.json \
+#                         --nJobs 1000 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 140X_dataRun3_Prompt_v2 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
+# 
+# python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024D-PromptReco-v1_MINIAOD.txt \
+#                         --outFolder Run3_2024/unpacked_2024/Muon_Run2024D-v1_MINIAOD/ntuples \
+#                         --objType tau \
+#                         --jobType tagAndProbe \
+#                         --inJson Collisions24_13p6TeV_378981_380384_DCSOnly_TkPx.json \
+#                         --nJobs 1000 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 140X_dataRun3_Prompt_v2 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
+
+
+## reEmulation of the 2024 data w/ new HCAL corrections
+
+python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023BCD-v1_RAW.txt \
+                        --outFolder Run3_2024/reEmu_2024_HCAL_corrections \
                         --objType tau \
-                        --jobType tagAndProbe \
-                        --inJson Collisions24_13p6TeV_378981_379253_DCSOnly_TkPx.json \
+                        --jobType reEmulL1_zeroBias \
+                        --inJson Collisions24_13p6TeV_378981_380384_DCSOnly_TkPx.json \
                         --nJobs 100 \
-                        --run Run3 \
                         --queue short \
                         --globalTag 140X_dataRun3_Prompt_v2 \
-                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
+                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_2024EGv1TAUv0cfi
 
+ 
 # ########################################################################################
 # ################################ DYToLL MC productions #################################
 # ########################################################################################
@@ -122,18 +160,18 @@ python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024B-PromptReco
 #                         --queue short \
 #                         --globalTag 133X_dataRun3_Prompt_v2 \
 #                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
-# 
+ 
 # python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023D-PromptReco-v1_MINIAOD.txt \
-#                         --outFolder Run3_2024/Muon_Run2023D/Muon_Run2023D-PromptReco-v1_MINIAOD \
+#                         --outFolder Run3_2024/Muon_Run2023D/Muon_Run2023D-PromptReco-v1_MINIAOD_new_selections \
 #                         --objType tau \
 #                         --jobType tagAndProbe \
 #                         --inJson Cert_Collisions2023_eraD_369803_370790_Golden.json \
-#                         --nJobs 150 \
+#                         --nJobs 450 \
 #                         --run Run3 \
 #                         --queue short \
 #                         --globalTag 133X_dataRun3_Prompt_v2 \
 #                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
-# 
+
 ##############################################################################################
 ############################### SingleMuon 13TeV - single runs ###############################
 ##############################################################################################
@@ -396,6 +434,17 @@ python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024B-PromptReco
 ####################################### ZeroBias 13TeV #######################################
 ##############################################################################################
 
+# python submitOnTier3.py --inFileList EphemeralZeroBias_Run3/EphemeralZeroBias_2024C_RAW_379420.txt \
+#                         --outFolder Run3_2024/unpacked_2024/Muon_Run2024C-v1_MINIAOD/rates_379420 \
+#                         --objType tau \
+#                         --jobType reEmulL1_zeroBias \
+#                         --inJson Collisions24_13p6TeV_378981_380074_DCSOnly_TkPx.json \
+#                         --nJobs 1000 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 140X_dataRun3_Prompt_v2 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_2024EGv1TAUv0cfi
+# 
 # python submitOnTier3.py --inFileList EphemeralZeroBias_Run2/EphemeralZeroBias_2018D_Run323775.txt \
 #                         --outFolder Run3preparation_2022/EphemeralZeroBias_2018D_Run323775_allBXbits__RAW \
 #                         --jobType reEmulL1_zeroBias \
