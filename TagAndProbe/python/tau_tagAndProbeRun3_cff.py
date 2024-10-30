@@ -10,15 +10,17 @@ HLTLIST_TAG = cms.VPSet(
     ##Mu SingleL1
     
     cms.PSet (
-        HLT = cms.string("HLT_IsoMu27_v"),
-        path1 = cms.vstring ("hltL3crIsoL1sMu22Or25L1f0L2f10QL3f27QL3trkIsoFiltered0p08"),
+        # HLT = cms.string("HLT_IsoMu27_v"),
+        # path1 = cms.vstring ("hltL3crIsoL1sMu22Or25L1f0L2f10QL3f27QL3trkIsoFiltered0p08"),
+        HLT = cms.string("HLT_IsoMu24_v*"),
+        path1 = cms.vstring ("hltL3crIsoL1sSingleMu22L1f0L2f10QL3f24QL3trkIsoFiltered0p08"),
         path2 = cms.vstring (""),
         leg1 = cms.int32(13),
         leg2 = cms.int32(13)
     ),
 
     # cms.PSet (
-    #     HLT = cms.string("HLT_IsoMu30_v"),
+    #     HLT = cms.string("HLT_IsoMu30_v*"),
     #     path1 = cms.vstring ("hltL3crIsoL1sMu22Or25L1f0L2f10QL3f30QL3trkIsoFiltered0p08"),
     #     path2 = cms.vstring (""),
     #     leg1 = cms.int32(13),
@@ -30,21 +32,21 @@ HLTLIST_TAG = cms.VPSet(
 HLTLIST = cms.VPSet(
     ##MuTau SingleL1
     cms.PSet (
-        HLT = cms.string("HLT_IsoMu27_LooseChargedIsoPFTauHPS20_Trk1_eta2p1_SingleL1_v"),
+        HLT = cms.string("HLT_IsoMu27_LooseChargedIsoPFTauHPS20_Trk1_eta2p1_SingleL1_v*"),
         path1 = cms.vstring ("hltL3crIsoL1sMu22Or25L1f0L2f10QL3f27QL3trkIsoFiltered0p08", "hltHpsOverlapFilterIsoMu27LooseChargedIsoPFTau20"),
         path2 = cms.vstring ("hltHpsPFTau20TrackLooseChargedIsoAgainstMuon", "hltHpsOverlapFilterIsoMu27LooseChargedIsoPFTau20"),
         leg1 = cms.int32(13),
         leg2 = cms.int32(15)
     ),
     cms.PSet (
-        HLT = cms.string("HLT_IsoMu27_MediumChargedIsoPFTauHPS20_Trk1_eta2p1_SingleL1_v"),
+        HLT = cms.string("HLT_IsoMu27_MediumChargedIsoPFTauHPS20_Trk1_eta2p1_SingleL1_v*"),
         path1 = cms.vstring ("hltL3crIsoL1sMu22Or25L1f0L2f10QL3f27QL3trkIsoFiltered0p08", "hltHpsOverlapFilterIsoMu27MediumChargedIsoPFTau20"),
         path2 = cms.vstring ("hltHpsPFTau20TrackMediumChargedIsoAgainstMuon", "hltHpsOverlapFilterIsoMu27MediumChargedIsoPFTau20"),
         leg1 = cms.int32(13),
         leg2 = cms.int32(15)
     ),
     cms.PSet (
-        HLT = cms.string("HLT_IsoMu27_TightChargedIsoPFTauHPS20_Trk1_eta2p1_SingleL1_v"),
+        HLT = cms.string("HLT_IsoMu27_TightChargedIsoPFTauHPS20_Trk1_eta2p1_SingleL1_v*"),
         path1 = cms.vstring ("hltL3crIsoL1sMu22Or25L1f0L2f10QL3f27QL3trkIsoFiltered0p08", "hltHpsOverlapFilterIsoMu27TightChargedIsoPFTau20"),
         path2 = cms.vstring ("hltHpsPFTau20TrackTightChargedIsoAgainstMuon", "hltHpsOverlapFilterIsoMu27TightChargedIsoPFTau20"),
         leg1 = cms.int32(13),
@@ -53,35 +55,35 @@ HLTLIST = cms.VPSet(
 
     ##MuTau CrossL1
     cms.PSet (
-        HLT = cms.string("HLT_IsoMu20_eta2p1_LooseDeepTauPFTauHPS27_eta2p1_CrossL1_v"),
+        HLT = cms.string("HLT_IsoMu20_eta2p1_LooseDeepTauPFTauHPS27_eta2p1_CrossL1_v*"),
         path1 = cms.vstring ("hltL3crIsoBigORMu18erTauXXer2p1L1f0L2f10QL3f20QL3trkIsoFiltered0p08", "hltHpsOverlapFilterIsoMu20LooseMuTauWPDeepTauPFTau27L1Seeded"),
         path2 = cms.vstring ("hltHpsSelectedPFTau27LooseMuTauWPDeepTauVsJetsAgainstMuonL1HLTMatched", "hltHpsOverlapFilterIsoMu20LooseMuTauWPDeepTauPFTau27L1Seeded"),
         leg1 = cms.int32(13),
         leg2 = cms.int32(15)
     ),
     cms.PSet (
-        HLT = cms.string("HLT_IsoMu20_eta2p1_TightChargedIsoPFTauHPS27_eta2p1_CrossL1_v"),
+        HLT = cms.string("HLT_IsoMu20_eta2p1_TightChargedIsoPFTauHPS27_eta2p1_CrossL1_v*"),
         path1 = cms.vstring ("hltL3crIsoBigORMu18erTauXXer2p1L1f0L2f10QL3f20QL3trkIsoFiltered0p08", "hltHpsOverlapFilterIsoMu20TightChargedIsoPFTau27L1Seeded"),
         path2 = cms.vstring ("hltHpsSelectedPFTau27TightChargedIsolationAgainstMuonL1HLTMatched", "hltHpsOverlapFilterIsoMu20TightChargedIsoPFTau27L1Seeded"),
         leg1 = cms.int32(13),
         leg2 = cms.int32(15)
     ),
     cms.PSet (
-        HLT = cms.string("HLT_IsoMu20_eta2p1_TightChargedIsoPFTauHPS27_eta2p1_TightID_CrossL1_v"),
+        HLT = cms.string("HLT_IsoMu20_eta2p1_TightChargedIsoPFTauHPS27_eta2p1_TightID_CrossL1_v*"),
         path1 = cms.vstring ("hltL3crIsoBigORMu18erTauXXer2p1L1f0L2f10QL3f20QL3trkIsoFiltered0p08", "hltHpsOverlapFilterIsoMu20TightChargedIsoTightOOSCPhotonsPFTau27L1Seeded"),
         path2 = cms.vstring ("hltHpsSelectedPFTau27TightChargedIsolationTightOOSCPhotonsAgainstMuonL1HLTMatched", "hltHpsOverlapFilterIsoMu20TightChargedIsoTightOOSCPhotonsPFTau27L1Seeded"),
         leg1 = cms.int32(13),
         leg2 = cms.int32(15)
     ),
     cms.PSet (
-        HLT = cms.string("HLT_IsoMu24_eta2p1_LooseDeepTauPFTauHPS30_eta2p1_CrossL1_v"),
+        HLT = cms.string("HLT_IsoMu24_eta2p1_LooseDeepTauPFTauHPS30_eta2p1_CrossL1_v*"),
         path1 = cms.vstring ("hltIsoMu24FilterEle24Tau30Monitoring", "hltHpsOverlapFilterIsoMu24LooseETauWPDeepTauPFTau30L1Seeded"),
         path2 = cms.vstring ("hltHpsSelectedPFTau30LooseETauWPDeepTauL1HLTMatchedMonitoring", "hltHpsOverlapFilterIsoMu24LooseETauWPDeepTauPFTau30L1Seeded"),
         leg1 = cms.int32(13),
         leg2 = cms.int32(15)
     ),
     cms.PSet (
-        HLT = cms.string("HLT_IsoMu24_eta2p1_MediumDeepTauPFTauHPS35_L2NN_eta2p1_CrossL1_v"),
+        HLT = cms.string("HLT_IsoMu24_eta2p1_MediumDeepTauPFTauHPS35_L2NN_eta2p1_CrossL1_v*"),
         path1 = cms.vstring ("hltL3crIsoL1sBigOrMuXXerIsoTauYYerL1f0L2f10QL3f24QL3trkIsoFiltered0p08", "hltHpsOverlapFilterIsoMu24MediumDitauWPDeepTauPFTau35Monitoring"),
         path2 = cms.vstring ("hltHpsSelectedPFTau35MediumDitauWPDeepTauL1HLTBigOrMuXXerIsoTauYYerMatched", "hltHpsOverlapFilterIsoMu24MediumDitauWPDeepTauPFTau35Monitoring"),
         leg1 = cms.int32(13),
@@ -93,7 +95,7 @@ HLTLIST = cms.VPSet(
     
     ##MuTau SingleL1
     cms.PSet (
-        HLT = cms.string("HLT_IsoMu24_eta2p1_MediumDeepTauPFTauHPS20_eta2p1_SingleL1_v"),
+        HLT = cms.string("HLT_IsoMu24_eta2p1_MediumDeepTauPFTauHPS20_eta2p1_SingleL1_v*"),
         path1 = cms.vstring ("hltL3crIsoL1sSingleMu22erL1f0L2f10QL3f24QL3trkIsoFiltered0p08", "hltHpsOverlapFilterIsoMu24MediumDeepTauPFTau20"),
         path2 = cms.vstring ("hltHpsSinglePFTau20MediumDitauWPDeepTauNoMatchForVBFIsoTau", "hltHpsOverlapFilterIsoMu24MediumDeepTauPFTau20"),
         leg1 = cms.int32(13),
@@ -101,28 +103,28 @@ HLTLIST = cms.VPSet(
     ),
     ##MuTau CrossL1
     cms.PSet (
-        HLT = cms.string("HLT_IsoMu24_eta2p1_MediumDeepTauPFTauHPS30_L2NN_eta2p1_CrossL1_v"),
+        HLT = cms.string("HLT_IsoMu24_eta2p1_MediumDeepTauPFTauHPS30_L2NN_eta2p1_CrossL1_v*"),
         path1 = cms.vstring ("hltL3crIsoL1sVeryBigOrMu18erTauXXerL1f0L2f10QL3f24QL3trkIsoFiltered0p08", "hltHpsOverlapFilterIsoMu24MediumDitauWPDeepTauPFTau30Monitoring"),
         path2 = cms.vstring ("hltHpsSelectedPFTau30MediumDitauWPDeepTauL1HLTVeryBigOrMu18erTauXXerMatched", "hltHpsOverlapFilterIsoMu24MediumDitauWPDeepTauPFTau30Monitoring"),
         leg1 = cms.int32(13),
         leg2 = cms.int32(15)
     ),
     cms.PSet (
-        HLT = cms.string("HLT_IsoMu24_eta2p1_MediumDeepTauPFTauHPS30_L2NN_eta2p1_PFJet60_CrossL1_v"),
+        HLT = cms.string("HLT_IsoMu24_eta2p1_MediumDeepTauPFTauHPS30_L2NN_eta2p1_PFJet60_CrossL1_v*"),
         path1 = cms.vstring ("hltL3crIsoL1sVeryBigOrMu18erTauXXerL1f0L2f10QL3f24QL3trkIsoFiltered0p08", "hltHpsOverlapFilterDeepTauPFTau30VeryBigOrMu18erTauXXPFJet60"),
         path2 = cms.vstring ("hltHpsSelectedPFTau30MediumDitauWPDeepTauL1HLTVeryBigOrMu18erTauXXerMatched", "hltHpsOverlapFilterDeepTauPFTau30VeryBigOrMu18erTauXXPFJet60"),
         leg1 = cms.int32(13),
         leg2 = cms.int32(15)
     ),
     cms.PSet (
-        HLT = cms.string("HLT_IsoMu24_eta2p1_MediumDeepTauPFTauHPS30_L2NN_eta2p1_PFJet75_CrossL1_v"),
+        HLT = cms.string("HLT_IsoMu24_eta2p1_MediumDeepTauPFTauHPS30_L2NN_eta2p1_PFJet75_CrossL1_v*"),
         path1 = cms.vstring ("hltL3crIsoL1sVeryBigOrMu18erTauXXerL1f0L2f10QL3f24QL3trkIsoFiltered0p08", "hltHpsOverlapFilterDeepTauPFTau30VeryBigOrMu18erTauXXPFJet75"),
         path2 = cms.vstring ("hltHpsSelectedPFTau30MediumDitauWPDeepTauL1HLTVeryBigOrMu18erTauXXerMatched", "hltHpsOverlapFilterDeepTauPFTau30VeryBigOrMu18erTauXXPFJet75"),
         leg1 = cms.int32(13),
         leg2 = cms.int32(15)
     ),
     cms.PSet (
-        HLT = cms.string("HLT_IsoMu24_eta2p1_MediumDeepTauPFTauHPS45_L2NN_eta2p1_CrossL1_v"),
+        HLT = cms.string("HLT_IsoMu24_eta2p1_MediumDeepTauPFTauHPS45_L2NN_eta2p1_CrossL1_v*"),
         path1 = cms.vstring ("hltL3crIsoL1sBigOrMuXXerIsoTauYYerL1f0L2f10QL3f24QL3trkIsoFiltered0p08", "hltHpsOverlapFilterIsoMu24MediumDitauWPDeepTauPFTau45MonitoringForVBFIsoTau"),
         path2 = cms.vstring ("hltHpsSelectedPFTau45MediumDitauWPDeepTauL1HLTBigOrMuXXerIsoTauYYerMatchedForVBFIsoTau", "hltHpsOverlapFilterIsoMu24MediumDitauWPDeepTauPFTau45MonitoringForVBFIsoTau"),
         leg1 = cms.int32(13),
@@ -162,9 +164,9 @@ goodTaus = cms.EDFilter("PATTauRefSelector",
                 'pt > 20 && abs(eta) < 2.1 ' #kinematics
                 '&& abs(charge) > 0 && abs(charge) < 2 ' #sometimes 2 prongs have charge != 1
                 '&& tauID("decayModeFinding") > 0.5 ' # tau ID
-                '&& tauID("byMediumDeepTau2017v2p1VSjet") > 0.5 ' # anti-Jet medium
-                '&& tauID("byMediumDeepTau2017v2p1VSmu") > 0.5 ' # anti-Muon tight
-                '&& tauID("byLooseDeepTau2017v2p1VSe") > 0.5 ' # anti-Ele loose
+                '&& tauID("byVVLooseDeepTau2017v2p1VSjet") > 0.5 ' # anti-Jet VVLoose (medium)
+                '&& tauID("byVLooseDeepTau2017v2p1VSmu") > 0.5 ' # anti-Muon VLoose (tight)
+                '&& tauID("byVVVLooseDeepTau2017v2p1VSe") > 0.5 ' # anti-Ele VVVloose (Loose)
                 # 'pt>0 && abs(eta) < 2.1'
         ),
         filter = cms.bool(True)
