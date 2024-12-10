@@ -90,10 +90,9 @@ process.options = cms.untracked.PSet(
 )
 
 # activating new HCAL corrections 25_05_10
-process.load("SimCalorimetry.HcalTrigPrimProducers.hcaltpdigi_cff")
-process.HcalTPGCoderULUT.LUTGenerationMode = cms.bool(False)
-
-process.GlobalTag = GlobalTag(process.GlobalTag, '140X_dataRun3_HLT_v3', 'Tag,HcalL1TriggerObjectsRcd,sqlite_file:HcalL1TriggerObjects_2024_TestingHFRespCorrsAndHEHFGains.db')
+# process.load("SimCalorimetry.HcalTrigPrimProducers.hcaltpdigi_cff")
+# process.HcalTPGCoderULUT.LUTGenerationMode = cms.bool(False)
+# process.GlobalTag = GlobalTag(process.GlobalTag, '140X_dataRun3_HLT_v3', 'Tag,HcalL1TriggerObjectsRcd,sqlite_file:HcalL1TriggerObjects_2024_TestingHFRespCorrsAndHEHFGains.db')
 
 # ################# Activating the latest (02/24) HCAL response corrections ############
 # CONDDIR="/grid_mnt/vol_home/llr/cms/mchiusi/Run3preparation/Run3_2024/CMSSW_13_3_0/src/TagAndProbeIntegrated/HCAL_corr"

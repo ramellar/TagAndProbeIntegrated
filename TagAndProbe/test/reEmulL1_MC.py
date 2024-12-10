@@ -45,6 +45,7 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('TagAndProbeIntegrated.TagAndProbe.zeroBias_cff')
 
+
 base = os.environ["CMSSW_BASE"]
 process.GlobalTag.toGet = cms.VPSet(
         cms.PSet(record = cms.string("GEMeMapRcd"),
@@ -68,6 +69,7 @@ process.schedule = cms.Schedule()
 ## re-emulate starting from TPs (here we re-emulate also the TPs)
 # from L1Trigger.Configuration.customiseReEmul import L1TReEmulMCFromRAWSimHcalTP
 # process = L1TReEmulMCFromRAWSimHcalTP(process)
+
 
 from L1Trigger.Configuration.customiseReEmul import L1TReEmulMCFromRAW
 process = L1TReEmulMCFromRAW(process)
@@ -96,8 +98,11 @@ process.options = cms.untracked.PSet(
     wantSummary = cms.untracked.bool(True)
 )
 
+print("calo stage 2")
 process.load('EventFilter.L1TRawToDigi.caloStage2Digis_cfi')
 process.caloStage2Digis.InputLabel = cms.InputTag('rawDataCollector')
+
+print("calo stage 2 processed")
 
 process.p = cms.Path (
     process.RawToDigi +
@@ -107,9 +112,15 @@ process.p = cms.Path (
 )
 process.schedule = cms.Schedule(process.p) # do my sequence pls
 
+print("process did work")
+
 # Silence output
-process.load("FWCore.MessageService.MessageLogger_cfi")
-process.MessageLogger.cerr.FwkReport.reportEvery = 1
+# process.load("FWCore.MessageService.MessageLogger_cfi")
+# process.MessageLogger.cerr.FwkReport.reportEvery = 1
+
+print("Silence output")
 
 # Adding ntuplizer
 process.TFileService=cms.Service('TFileService',fileName=cms.string(options.outputFile))
+
+print("doonee!")

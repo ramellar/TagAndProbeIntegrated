@@ -16,16 +16,15 @@ source /opt/exp_soft/cms/t3/t3setup
 
 ## 2024 checking unpacked ###
 
-# python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024B-PromptReco-v1_MINIAOD.txt \
-#                         --outFolder Run3_2024/unpacked_2024/Muon_Run2024B-v1_MINIAOD/ntuples \
+# python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024I_MINIAOD.txt \
+#                         --outFolder Run3_2024/unpacked_2024/Muon_Run2024I_MINIAOD/ntuples \
 #                         --objType tau \
 #                         --jobType tagAndProbe \
-#                         --inJson Collisions24_13p6TeV_378981_379774_DCSOnly_TkPx.json \
-#                         --nJobs 1000 \
+#                         --inJson Collisions24_13p6TeV_378981_386951_DCSOnly_TkPx.json \
+#                         --nJobs 200 \
 #                         --run Run3 \
 #                         --queue short \
-#                         --globalTag 140X_dataRun3_Prompt_v2 \
-#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
+#                         --globalTag 140X_dataRun3_Prompt_v4 
 # 
 # python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024C-PromptReco-v1_MINIAOD.txt \
 #                         --outFolder Run3_2024/unpacked_2024/Muon_Run2024C-v1_MINIAOD/ntuples \
@@ -39,7 +38,7 @@ source /opt/exp_soft/cms/t3/t3setup
 #                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
 # 
 # python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024D-PromptReco-v1_MINIAOD.txt \
-#                         --outFolder Run3_2024/unpacked_2024/Muon_Run2024D-v1_MINIAOD/ntuples \
+#                         --outFolder Run3_2024/unpacked_2024/Muon_Run2024D-v1_MINIAOD/ntuples_test \
 #                         --objType tau \
 #                         --jobType tagAndProbe \
 #                         --inJson Collisions24_13p6TeV_378981_380384_DCSOnly_TkPx.json \
@@ -52,15 +51,15 @@ source /opt/exp_soft/cms/t3/t3setup
 
 ## reEmulation of the 2024 data w/ new HCAL corrections
 
-python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023BCD-v1_RAW.txt \
-                        --outFolder Run3_2024/reEmu_2024_HCAL_corrections \
-                        --objType tau \
-                        --jobType reEmulL1_zeroBias \
-                        --inJson Collisions24_13p6TeV_378981_380384_DCSOnly_TkPx.json \
-                        --nJobs 100 \
-                        --queue short \
-                        --globalTag 140X_dataRun3_Prompt_v2 \
-                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_2024EGv1TAUv0cfi
+# python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023BCD-v1_RAW.txt \
+#                         --outFolder Run3_2024/reEmu_2024_HCAL_corrections \
+#                         --objType tau \
+#                         --jobType reEmulL1_zeroBias \
+#                         --inJson Collisions24_13p6TeV_378981_380384_DCSOnly_TkPx.json \
+#                         --nJobs 100 \
+#                         --queue short \
+#                         --globalTag 140X_dataRun3_Prompt_v2 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_2024EGv1TAUv0cfi
 
  
 # ########################################################################################
@@ -151,15 +150,15 @@ python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023BCD-v1_RAW.t
 ############################### SingleMuon 13TeV - ERA 2023D #################################
 ##############################################################################################
 
-# python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023D-v1_RAW.txt \
-#                         --outFolder Run3_2024/Muon_Run2023D/Muon_Run2023D-v1_RAW \
+# python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024I_RAW_386604.txt \
+#                         --outFolder Run3_2024/Muon_Run2024I-v1_RAW \
 #                         --objType tau \
 #                         --jobType reEmulL1_zeroBias \
-#                         --inJson Cert_Collisions2023_eraD_369803_370790_Golden.json \
-#                         --nJobs 5000 \
+#                         --inJson Collisions24_13p6TeV_378981_386630_DCSOnly_TkPx.json \
+#                         --nJobs 50 \
 #                         --queue short \
-#                         --globalTag 133X_dataRun3_Prompt_v2 \
-#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_cfi
+#                         --globalTag 140X_dataRun3_Prompt_v4 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2024_v0_3_cfi
  
 # python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023D-PromptReco-v1_MINIAOD.txt \
 #                         --outFolder Run3_2024/Muon_Run2023D/Muon_Run2023D-PromptReco-v1_MINIAOD_new_selections \
@@ -523,3 +522,109 @@ python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023BCD-v1_RAW.t
 #                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2022_v0_6_cfi
 
 
+# ########################################################################################
+# ################################ DYToLL MC productions #################################
+# ########################################################################################
+# 
+# ## MINIAOD -----------------------------------------------------------------------------------
+# python submitOnTier3.py --inFileList MC_for_taus/DYTo2L_MLL-50_TuneCP5_13p6TeV_pythia8_Run3Winter24_MiniAOD.txt \
+#                         --outFolder Run3_2024/MC_samples_MiniAOD_DY \
+#                         --objType tau \
+#                         --jobType noTagAndProbe \
+#                         --inJson None \
+#                         --nJobs 50 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 140X_mcRun3_2023_realistic_v1 \
+#                         
+# 
+# ## RAW -----------------------------------------------------------------------------------
+# python submitOnTier3.py --inFileList MC_for_taus/DYTo2L_MLL-50_TuneCP5_13p6TeV_pythia8_Run3Winter24_RAW.txt \
+#                         --outFolder Run3_2024/MC_samples_RAW_DY \
+#                         --jobType reEmulL1_MC \
+#                         --inJson None \
+#                         --nJobs 500 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 140X_dataRun3_Prompt_v4 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2024_v0_3_cfi
+# 
+# 
+# ##############################################################################################
+# ################################ VBFHToTauTau MC productions #################################
+# ##############################################################################################
+# 
+# ## MINIAOD -----------------------------------------------------------------------------------
+python submitOnTier3.py --inFileList MC_for_taus/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8_Run3Winter24_MiniAOD.txt \
+                        --outFolder Run3_2024/MC_samples_dummytest_MiniAOD \
+                        --objType tau \
+                        --jobType noTagAndProbe \
+                        --inJson None \
+                        --nJobs 1 \
+                        --run Run3 --queue short \
+                        --globalTag 140X_dataRun3_Prompt_v4 
+#                         
+# 
+# ## RAW -----------------------------------------------------------------------------------
+# python submitOnTier3.py --inFileList MC_for_taus/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8_Run3Winter24_RAW.txt \
+#                         --outFolder Run3_2024/MC_samples_RAW_VBF \
+#                         --jobType reEmulL1_MC \
+#                         --inJson None \
+#                         --nJobs 500 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 140X_mcRun3_2024_realistic_v14 \
+                        # --caloParams L1Trigger.L1TCalorimeter.caloParams_2024_v0_3_cfi
+# 
+# 
+# #################################################################################################
+# ################################ GluGluHToTauTau MC productions #################################
+# #################################################################################################
+# 
+# ## MINIAOD -----------------------------------------------------------------------------------
+# python submitOnTier3.py --inFileList MC_for_taus/GluGluHToTauTau_M-125_TuneCP5_13p6TeV_powheg-pythia8_Run3Winter24_MiniAOD.txt \
+#                         --outFolder Run3_2024/MC_samples_MiniAOD_GluGlu \
+#                         --objType tau \
+#                         --jobType noTagAndProbe \
+#                         --inJson None \
+#                         --nJobs 50 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 140X_dataRun3_Prompt_v4 \
+#                      
+# 
+# ## RAW -----------------------------------------------------------------------------------
+# python submitOnTier3.py --inFileList MC_for_taus/GluGluHToTauTau_M-125_TuneCP5_13p6TeV_powheg-pythia8_Run3Winter24_RAW.txt \
+#                         --outFolder Run3_2024/MC_samples_RAW_GluGlu  \
+#                         --jobType reEmulL1_MC \
+#                         --inJson None \
+#                         --nJobs 500 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 140X_dataRun3_Prompt_v4 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2024_v0_3_cfi
+
+
+
+## Dummy test
+
+# python submitOnTier3.py --inFileList MC_for_taus/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8_Run3Winter24_MiniAOD_dummy.txt \
+#                         --outFolder Run3_2024/MC_samples_dummytest_MiniAOD \
+#                         --objType tau \
+#                         --jobType noTagAndProbe \
+#                         --inJson None \
+#                         --nJobs 50 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 140X_dataRun3_Prompt_v4 \
+
+# python submitOnTier3.py --inFileList MC_for_taus/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8_Run3Winter24_RAW.txt \
+#                         --outFolder Run3_2024/MC_samples_dummytest_RAW \
+#                         --objType tau \
+#                         --jobType reEmulL1_MC \
+#                         --inJson None \
+#                         --nJobs 1 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 140X_mcRun3_2024_realistic_v14 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2024_v0_3_cfi
