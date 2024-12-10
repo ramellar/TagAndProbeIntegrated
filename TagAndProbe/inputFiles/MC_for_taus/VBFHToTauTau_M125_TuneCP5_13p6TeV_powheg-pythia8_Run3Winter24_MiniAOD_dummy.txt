@@ -1,0 +1,1 @@
+/store/mc/Run3Winter24MiniAOD/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8/MINIAODSIM/133X_mcRun3_2024_realistic_v8-v2/50000/2c83de61-b3f2-4aa9-879f-cbdf7525fddb.root

@@ -1,0 +1,1 @@
+/store/mc/Run3Winter24Digi/VBFHToTauTau_M125_TuneCP5_13p6TeV_powheg-pythia8/GEN-SIM-RAW/133X_mcRun3_2024_realistic_v8-v2/2560000/c4b06ec9-fc8c-4b31-87df-7af190ed2c4b.root
