@@ -702,7 +702,7 @@ int TauNtuplizer_noTagAndProbe::FillJet(const edm::View<pat::Jet> *jets, const e
     _jets_mT.push_back( (float) ijet->mt());
     _jets_Flavour.push_back(ijet->partonFlavour());
     _jets_HadronFlavour.push_back(ijet->hadronFlavour());
-    _jets_PUJetID.push_back(ijet->userFloat("pileupJetId:fullDiscriminant"));
+    // _jets_PUJetID.push_back(ijet->hasUserFloat("pileupJetIdUpdated:fullDiscriminant") ? ijet->userFloat("pileupJetId:fullDiscriminant") : -999);
     _jets_PUJetIDupdated.push_back(ijet->hasUserFloat("pileupJetIdUpdated:fullDiscriminant") ? ijet->userFloat("pileupJetIdUpdated:fullDiscriminant") : -999);
     //float vtxPx = ijet->userFloat ("vtxPx");
     //float vtxPy = ijet->userFloat ("vtxPy");
