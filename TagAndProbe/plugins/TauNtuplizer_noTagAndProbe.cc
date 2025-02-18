@@ -47,6 +47,8 @@
 #include "CommonTools/UtilAlgos/interface/TFileService.h"
 #include <DataFormats/Common/interface/View.h>
 
+#define N_GEN_MAX 5000
+
 
 //Set this variable to decide the number of triggers that you want to check simultaneously
 #define NUMBER_OF_MAXIMUM_TRIGGERS 64
@@ -76,6 +78,7 @@ private:
   virtual void endRun(edm::Run const&, edm::EventSetup const&);
   void Initialize();
   bool hasFilters(const pat::TriggerObjectStandAlone&  obj , const std::vector<std::string>& filtersToLookFor);
+  void addTheGenInfo(	const edm::Handle<edm::View<reco::GenParticle>>  &genParticles);
   int FillJet(const edm::View<pat::Jet> *jets, const edm::Event& event);
   // int FillJet(const edm::View<pat::Jet> *jets, const edm::Event& event, JetCorrectionUncertainty* jecUnc);  
 
@@ -130,6 +133,14 @@ private:
   int _foundJet;
   int _Nvtx;
 
+  int nGenParticle;
+  float genParticlePDGID[N_GEN_MAX];
+  float genParticlePt[N_GEN_MAX];
+  float genParticleEta[N_GEN_MAX];
+  float genParticleMass[N_GEN_MAX];
+  float genParticlePhi[N_GEN_MAX];
+  float genParticleMother[N_GEN_MAX];
+
 
   //Jets variables
   Int_t _numberOfJets;
@@ -172,6 +183,7 @@ private:
   std::vector<Float_t> _jetrawf;
 
   edm::EDGetTokenT<GenEventInfoProduct> _genTag;
+  edm::EDGetTokenT<edm::View<reco::GenParticle> > _genParticlesTag;
   edm::EDGetTokenT<pat::TauRefVector>   _tauTag;
   edm::EDGetTokenT<pat::TriggerObjectStandAloneCollection> _triggerObjects;
   edm::EDGetTokenT<edm::TriggerResults> _triggerBits;
@@ -207,6 +219,7 @@ private:
 // ----Constructor and Destructor -----
 TauNtuplizer_noTagAndProbe::TauNtuplizer_noTagAndProbe(const edm::ParameterSet& iConfig) :
   _genTag         (consumes<GenEventInfoProduct>                    (iConfig.getParameter<edm::InputTag>("genCollection"))),
+  _genParticlesTag (consumes<edm::View<reco::GenParticle> >          (iConfig.getParameter<edm::InputTag>("genParticles"))),
   _tauTag         (consumes<pat::TauRefVector>                      (iConfig.getParameter<edm::InputTag>("taus"))),
   _triggerObjects (consumes<pat::TriggerObjectStandAloneCollection> (iConfig.getParameter<edm::InputTag>("triggerSet"))),
   _triggerBits    (consumes<edm::TriggerResults>                    (iConfig.getParameter<edm::InputTag>("triggerResultsLabel"))),
@@ -413,6 +426,14 @@ void TauNtuplizer_noTagAndProbe::beginJob()
   this -> _tree -> Branch("isOS", &_isOS, "isOS/O");
   this -> _tree -> Branch("foundJet", &_foundJet, "foundJet/I");
   this -> _tree -> Branch("Nvtx", &_Nvtx, "Nvtx/I");
+
+  this -> _tree -> Branch("nGenParticle",&nGenParticle);
+  this -> _tree -> Branch("genParticlePDGID",  genParticlePDGID,"genParticlePDGID[nGenParticle]/F");
+  this -> _tree -> Branch("genParticlePt",  genParticlePt,  "genParticlePt[nGenParticle]/F");
+  this -> _tree -> Branch("genParticleEta",  genParticleEta,  "genParticleEta[nGenParticle]/F");
+  this -> _tree -> Branch("genParticlePhi",  genParticlePhi,  "genParticlePhi[nGenParticle]/F");
+  this -> _tree -> Branch("genParticleMass",  genParticleMass,  "genParticleMass[nGenParticle]/F");
+  this -> _tree -> Branch("genParticleMother",  genParticleMother,  "genParticleMother[nGenParticle]/F");
 	
   this -> _tree->Branch("JetsNumber",&_numberOfJets,"JetsNumber/I");
   this -> _tree->Branch("jets_px",&_jets_px);
@@ -479,6 +500,7 @@ void TauNtuplizer_noTagAndProbe::analyze(const edm::Event& iEvent, const edm::Ev
 
   // search for the tag in the event
   edm::Handle<pat::TauRefVector>  tauHandle;
+  edm::Handle<edm::View<reco::GenParticle> > genParticles;
   edm::Handle<pat::TriggerObjectStandAloneCollection> triggerObjects;
   edm::Handle<edm::TriggerResults> triggerBits;
   edm::Handle<edm::View<pat::Jet>> jetHandle;
@@ -486,6 +508,7 @@ void TauNtuplizer_noTagAndProbe::analyze(const edm::Event& iEvent, const edm::Ev
   edm::Handle<std::vector<reco::Vertex> >  vertexes;
 
   iEvent.getByToken(this -> _tauTag,   tauHandle);
+  iEvent.getByToken(this -> _genParticlesTag, genParticles);
   iEvent.getByToken(this -> _triggerObjects, triggerObjects);
   iEvent.getByToken(this -> _triggerBits, triggerBits);
   iEvent.getByToken(this -> _JetTag, jetHandle);
@@ -656,6 +679,8 @@ void TauNtuplizer_noTagAndProbe::analyze(const edm::Event& iEvent, const edm::Ev
   // std::cout << "++++++++++ FILL ++++++++++" << std::endl;
 
   const edm::View<pat::Jet>* jets = jetHandle.product();
+
+  addTheGenInfo(genParticles);
   
   //edm::ESHandle<JetCorrectorParametersCollection> JetCorParColl;
   //eSetup.get<JetCorrectionsRecord>().get("AK4PFchs",JetCorParColl); 
@@ -688,6 +713,37 @@ bool TauNtuplizer_noTagAndProbe::hasFilters(const pat::TriggerObjectStandAlone& 
     }
 
   return true;
+}
+
+void TauNtuplizer_noTagAndProbe::addTheGenInfo( const edm::Handle<edm::View<reco::GenParticle>> &prunedGenParticles  )
+{
+    //
+    // Explicit loop and geometric matching method
+    //
+
+    nGenParticle=0;
+
+    for(size_t i=0; i<prunedGenParticles->size(); i++)
+    {
+        const reco::Candidate *particle = &(*prunedGenParticles)[i];
+
+        // Drop everything that is not electron or not status 1
+        if( abs(particle->pdgId()) != 15 || particle->status() != 1 || particle->pt()<20)
+            continue;
+        genParticlePDGID[nGenParticle] = particle->pdgId();
+        genParticlePt[nGenParticle] = particle->pt();
+        genParticleEta[nGenParticle] = particle->eta();
+        genParticlePhi[nGenParticle] = particle->phi();
+        genParticleMass[nGenParticle] = particle->mass();
+        genParticleMother[nGenParticle] = particle->mother()->pdgId();
+
+        nGenParticle++;
+
+        if (nGenParticle > N_GEN_MAX)
+        {
+            std::cout<<" nGenParticle > N_GEN_MAX , Break !! \n";
+        }
+    }
 }
 
 int TauNtuplizer_noTagAndProbe::FillJet(const edm::View<pat::Jet> *jets, const edm::Event& event){//, JetCorrectionUncertainty* jecUnc){

@@ -7,7 +7,7 @@ def chunks(l, n):
 
 def splitInBlocks (l, n):
     """split the list l in n blocks of equal size"""
-    k = len(l) / n
+    k = int(len(l) / n)
     r = len(l) % n
 
     i = 0

@@ -32,17 +32,14 @@ goodTaus = cms.EDFilter("PATTauRefSelector",
                 '&& abs(charge) > 0 && abs(charge) < 2 ' #sometimes 2 prongs have charge != 1
                 '&& tauID("decayModeFindingNewDMs") > 0.5 ' # tau ID
                 '&& tauID("byMediumDeepTau2018v2p5VSjet") > 0.5 ' # anti-Jet medium
-                # '&& tauID("byMediumDeepTau2017v2p1VSjet") > 0.5 ' # anti-Jet medium
                 
-                # to be used for VBFHToTauTau and similar datasets
+                # to be used for VBFHToTauTau, GluGluHToTauTau and similar datasets
                 '&& tauID("byMediumDeepTau2018v2p5VSmu") > 0.5 ' # anti-Muon medium
-                '&& tauID("byLooseDeepTau2018v2p5VSe") > 0.5 ' # anti-Ele loose
-                # '&& tauID("byMediumDeepTau2017v2p1VSmu") > 0.5 ' # anti-Muon medium
-                # '&& tauID("byLooseDeepTau2017v2p1VSe") > 0.5 ' # anti-Ele loose
+                '&& tauID("byLooseDeepTau2018v2p5VSmu") > 0.5 ' # anti-Ele loose
 
                 # to be used for DYLL and similar datasets
-                # '&& tauID("byTightDeepTau2017v2p1VSmu") > 0.5 ' # anti-Muon tight
-                # '&& tauID("byTightDeepTau2017v2p1VSe") > 0.5 ' # anti-Ele tight
+                # '&& tauID("byTightDeepTau2018v2p5VSmu") > 0.5 ' # anti-Muon tight
+                # '&& tauID("byTightDeepTau2018v2p5VSe") > 0.5 ' # anti-Ele tight
         ),
         filter = cms.bool(True)
 )
@@ -61,6 +58,7 @@ Ntuplizer_noTagAndProbe = cms.EDAnalyzer("TauNtuplizer_noTagAndProbe",
     L1EmuTau = cms.InputTag("simCaloStage2Digis", "MP"),
     jetCollection = cms.InputTag("slimmedJets"),
     l1tJetCollection = cms.InputTag("caloStage2Digis","Jet"),
+    genParticles = cms.InputTag("prunedGenParticles"),
     Vertexes = cms.InputTag("offlineSlimmedPrimaryVertices"),
     triggerList = HLTLIST,
     L2CaloJet_ForIsoPix_Collection = cms.InputTag("hltL2TausForPixelIsolation", "", "TEST"),
