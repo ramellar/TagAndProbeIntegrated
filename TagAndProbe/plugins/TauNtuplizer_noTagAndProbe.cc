@@ -96,6 +96,7 @@ private:
   float _tauEta;
   float _tauPhi;
   int   _tauCharge;
+  float _tauMass;
   int   _tauDecayMode;
   float _hltPt;
   float _hltEta;
@@ -301,6 +302,7 @@ void TauNtuplizer_noTagAndProbe::Initialize() {
   this -> _tauEta = -1.;
   this -> _tauPhi = -1.;
   this -> _tauCharge = -1;
+  this -> _tauMass = -1.;
   this -> _tauDecayMode = -1;
   this -> _isMatched = false;
   this -> _hltPt = -1;
@@ -389,6 +391,7 @@ void TauNtuplizer_noTagAndProbe::beginJob()
   this -> _tree -> Branch("tauEta", &_tauEta, "tauEta/F");
   this -> _tree -> Branch("tauPhi", &_tauPhi, "tauPhi/F");
   this -> _tree -> Branch("tauCharge",  &_tauCharge,  "tauCharge/I");
+  this -> _tree -> Branch("tauMass", &_tauMass, "tauMass/F");
   this -> _tree -> Branch("tauDecayMode",  &_tauDecayMode,  "tauDecayMode/I");
   this -> _tree -> Branch("hltPt",  &_hltPt,  "hltPt/F");
   this -> _tree -> Branch("hltEta", &_hltEta, "hltEta/F");
@@ -663,10 +666,11 @@ void TauNtuplizer_noTagAndProbe::analyze(const edm::Event& iEvent, const edm::Ev
     {
       const pat::TauRef tau = (*tauHandle)[0];
 
-      this -> _tauPt = tau -> pt();
-      this -> _tauEta = tau -> eta();
-      this -> _tauPhi = tau -> phi();
-      this -> _tauCharge = tau -> charge();
+      this -> _tauPt        = tau -> pt();
+      this -> _tauEta       = tau -> eta();
+      this -> _tauPhi       = tau -> phi();
+      this -> _tauCharge    = tau -> charge();
+      this -> _tauMass      = tau -> mass();
       this -> _tauDecayMode = tau -> decayMode();
     }
 
