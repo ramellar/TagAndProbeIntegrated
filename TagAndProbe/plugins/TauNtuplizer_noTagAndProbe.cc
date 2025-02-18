@@ -727,9 +727,10 @@ void TauNtuplizer_noTagAndProbe::addTheGenInfo( const edm::Handle<edm::View<reco
     {
         const reco::Candidate *particle = &(*prunedGenParticles)[i];
 
-        // Drop everything that is not electron or not status 1
-        if( abs(particle->pdgId()) != 15 || particle->status() != 1 || particle->pt()<20)
+        // Drop everything that is not tau 
+        if( abs(particle->pdgId()) != 15 || particle->pt()<20)
             continue;
+        
         genParticlePDGID[nGenParticle] = particle->pdgId();
         genParticlePt[nGenParticle] = particle->pt();
         genParticleEta[nGenParticle] = particle->eta();
