@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# sh resubmitFileOpenError.sh folder_to_scan 
+
 # Check if an argument is provided
 if [ $# -ne 1 ]; then
     echo "Usage: $0 <path_to_directory>"
@@ -20,16 +22,22 @@ do
     cd "$dir" || continue  # Avoid errors if cd fails
     user=$(pwd | cut -d"/" -f4)
 
-    # Loop through log files
     for logfile in log*.txt
     do
         tmp=${logfile#*_}
         idx=${tmp%.*}
-        out=$(grep -r "FileOpenError" "$logfile")
         
-        if [[ $out == "An exception of category 'FallbackFileOpenError' occurred while" ]]; then
-            echo "Resubmitting job num $idx"
+        # Check for FileOpenError
+        if grep -q "An exception of category 'FallbackFileOpenError' occurred while" "$logfile"; then
+            echo "Resubmitting job num $idx with -short due to FileOpenError"
             /home/llr/cms/$user/t3submit -short "job_$idx.sh"
+            continue  # No need to check further, since we already resubmitted
+        fi
+        
+        # Check if TrigReport is missing
+        if ! grep -q "TrigReport ---------- Event  Summary ------------" "$logfile"; then
+            echo "Resubmitting job num $idx with -long due to missing TrigReport"
+            /home/llr/cms/$user/t3submit -long "job_$idx.sh"
         fi
     done
     cd - > /dev/null  # Return to the previous directory, suppress output
