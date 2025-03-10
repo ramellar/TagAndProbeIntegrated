@@ -52,15 +52,15 @@ source /opt/exp_soft/cms/t3/t3setup
 
 ## reEmulation of the 2024 data w/ new HCAL corrections
 
-python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023BCD-v1_RAW.txt \
-                        --outFolder Run3_2024/reEmu_2024_HCAL_corrections \
-                        --objType tau \
-                        --jobType reEmulL1_zeroBias \
-                        --inJson Collisions24_13p6TeV_378981_380384_DCSOnly_TkPx.json \
-                        --nJobs 100 \
-                        --queue short \
-                        --globalTag 140X_dataRun3_Prompt_v2 \
-                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_2024EGv1TAUv0cfi
+# python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023BCD-v1_RAW.txt \
+#                         --outFolder Run3_2024/reEmu_2024_HCAL_corrections \
+#                         --objType tau \
+#                         --jobType reEmulL1_zeroBias \
+#                         --inJson Collisions24_13p6TeV_378981_380384_DCSOnly_TkPx.json \
+#                         --nJobs 100 \
+#                         --queue short \
+#                         --globalTag 140X_dataRun3_Prompt_v2 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_2024EGv1TAUv0cfi
 
  
 # ########################################################################################
@@ -333,26 +333,24 @@ python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023BCD-v1_RAW.t
 #                         --globalTag 124X_dataRun3_Prompt_v10 \
 #                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2022_v0_1_cfi
 
-# python submitOnTier3.py --inFileList muon_datasets_Run3/Muon__Run2022G-PromptReco-v1__Run362696__MINIAOD.txt \
-#                         --outFolder Run3preparation_2023/2023_02_10_optimizationV0/Muon_Run2022G-PromptReco-v1_Run362696_MINIAOD \
-#                         --jobType tagAndProbe \
-#                         --inJson Cert_Collisions2022_eraG_362433_362760_Golden.json \
-#                         --nJobs 231 \
-#                         --run Run3 \
-#                         --queue short \
-#                         --globalTag 124X_dataRun3_Prompt_v10 \
-#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2022_v0_6_cfi
+python submitOnTier3.py --inFileList muon_datasets_Run3/Muon__Run2022G-PromptReco-v1__Run362696__MINIAOD.txt \
+                        --outFolder Run3preparation_2023/2023_02_10_optimizationV0/Muon_Run2022G-PromptReco-v1_Run362696_MINIAOD \
+                        --jobType tagAndProbe \
+                        --inJson 2024I_Golden.json \
+                        --nJobs 231 \
+                        --run Run3 \
+                        --queue short \
+                        --globalTag 124X_dataRun3_Prompt_v10
 
 ## RAW -----------------------------------------------------------------------------------
-# python submitOnTier3.py --inFileList muon_datasets_Run3/Muon__Run2022G-v1__RAW.txt \
-#                         --outFolder Run3preparation_2023/Muon_Run2022G-v1__RAW \
-#                         --jobType reEmulL1_zeroBias \
-#                         --allBXs 0 \
-#                         --inJson Cert_Collisions2022_355100_362760_Golden.json \
-#                         --nJobs 8200 \
-#                         --queue short \
-#                         --globalTag 124X_dataRun3_Prompt_v10 \
-#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2022_v0_6_cfi
+python submitOnTier3.py --inFileList muon_datasets_Run3/Muon__Run2022G-v1__RAW.txt \
+                        --outFolder Run3preparation_2023/Muon_Run2022G-v1__RAW \
+                        --jobType reEmulL1_zeroBias \
+                        --inJson 2024I_Golden.json \
+                        --nJobs 14000 \
+                        --queue short \
+                        --globalTag 140X_dataRun3_Prompt_v4 \
+                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2022_v0_6_cfi
 
 
 ##############################################################################################
@@ -512,14 +510,96 @@ python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2023BCD-v1_RAW.t
 #                         --globalTag 124X_dataRun3_Prompt_v10 \
 #                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2022_v0_6_cfi
 
-# python submitOnTier3.py --inFileList EphemeralZeroBias_Run3/EphemeralZeroBias0__Run2022G-v1__Run362617__RAW.txt \
-#                         --outFolder Run3preparation_2023/EphemeralZeroBias0__Run2022G_Run362617__RAW \
+# python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024I_RAW_386604.txt \
+#                         --outFolder MC25_Winter_optmization/Zero_bias_run_386604 \
 #                         --jobType reEmulL1_zeroBias \
 #                         --inJson None \
-#                         --nJobs 245 \
+#                         --nJobs 650 \
 #                         --run Run3 \
 #                         --queue short \
-#                         --globalTag 124X_dataRun3_Prompt_v10 \
-#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2022_v0_6_cfi
+#                         --globalTag 140X_dataRun3_Prompt_v4 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2025_conservative_v3_iET_cfi
 
 
+# ########################################################################################
+# ################################ DYToLL MC productions #################################
+# ########################################################################################
+# 
+# ## MINIAOD -----------------------------------------------------------------------------------
+# python submitOnTier3.py --inFileList MC_for_taus/DYto2Tau-4Jets_Bin-MLL-50_Fil-MuTauh_TuneCP5_Run3Winter25_MiniAOD.txt \
+#                         --outFolder MC25_Winter_optmization/DY_miniAOD/ \
+#                         --objType tau \
+#                         --jobType noTagAndProbe \
+#                         --inJson None \
+#                         --nJobs 50 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 142X_mcRun3_2025_realistic_v7 \
+#                         
+# 
+# ## RAW -----------------------------------------------------------------------------------
+# python submitOnTier3.py --inFileList MC_for_taus/DYto2Tau-4Jets_Bin-MLL-50_Fil-MuTauh_TuneCP5_Run3Winter25_RAW.txt \
+#                         --outFolder MC25_Winter_optmization/2025W-MC-caloParams_2025_conservative_v3_iET_cfi/DYto2Tau/ \
+#                         --jobType reEmulL1_MC \
+#                         --inJson None \
+#                         --nJobs 500 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 142X_mcRun3_2025_realistic_v7 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2025_conservative_v3_iET_cfi
+# 
+# 
+# ##############################################################################################
+# ################################ VBFHToTauTau MC productions #################################
+# ##############################################################################################
+# 
+## MINIAOD -----------------------------------------------------------------------------------
+python3 submitOnTier3.py --inFileList MC_for_taus/VBFHto2Tau_Par-MH-125_TuneCP5_Run3Winter25_MiniAOD.txt \
+                        --outFolder MC25_Winter_optmization/VBF_miniAOD/ \
+                        --objType tau \
+                        --jobType noTagAndProbe \
+                        --inJson None \
+                        --nJobs 5 \
+                        --run Run3 \
+                        --queue short \
+                        --globalTag 142X_mcRun3_2025_realistic_v7 
+                        
+
+# RAW -----------------------------------------------------------------------------------
+python3 submitOnTier3.py --inFileList MC_for_taus/VBFHto2Tau_Par-MH-125_TuneCP5_Run3Winter25_RAW.txt \
+                        --outFolder MC25_Winter_optmization/2025W-MC-caloParams_2025_conservative_v3_iET_cfi/VBFHToTauTau \
+                        --jobType reEmulL1_MC \
+                        --inJson None \
+                        --nJobs 10 \
+                        --run Run3 \
+                        --queue short \
+                        --globalTag 142X_mcRun3_2025_realistic_v7 \
+                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2025_conservative_v3_iET_cfi
+# # 
+# # 
+# # #################################################################################################
+# # ################################ GluGluHToTauTau MC productions #################################
+# # #################################################################################################
+# # 
+# # ## MINIAOD -----------------------------------------------------------------------------------
+python3 submitOnTier3.py --inFileList MC_for_taus/GluGluHto2Tau_Par-MH-125_TuneCP5_Run3Winter25_MiniAOD.txt \
+                        --outFolder MC25_Winter_optmization/GluGlu_miniAOD/ \
+                        --objType tau \
+                        --jobType noTagAndProbe \
+                        --inJson None \
+                        --nJobs 5 \
+                        --run Run3 \
+                        --queue short \
+                        --globalTag 142X_mcRun3_2025_realistic_v7 \
+                     
+
+## RAW -----------------------------------------------------------------------------------
+python3 submitOnTier3.py --inFileList MC_for_taus/GluGluHto2Tau_Par-MH-125_TuneCP5_Run3Winter25_RAW.txt \
+                        --outFolder  MC25_Winter_optmization/2025W-MC-caloParams_2025_conservative_v3_iET_cfi/GluGluHToTauTau/ \
+                        --jobType reEmulL1_MC \
+                        --inJson None \
+                        --nJobs 10 \
+                        --run Run3 \
+                        --queue short \
+                        --globalTag 142X_mcRun3_2025_realistic_v7 \
+                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2025_conservative_v3_iET_cfi
