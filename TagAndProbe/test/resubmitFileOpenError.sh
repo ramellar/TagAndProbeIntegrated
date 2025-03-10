@@ -33,6 +33,20 @@ do
             /home/llr/cms/$user/t3submit -short "job_$idx.sh"
             continue  # No need to check further, since we already resubmitted
         fi
+
+        # Check for fatal system signal
+        if grep -q "A fatal system signal has occurred: abort signal" "$logfile"; then
+            echo "Resubmitting job num $idx with -short due to fatal system signal"
+            /home/llr/cms/$user/t3submit -short "job_$idx.sh"
+            continue  # No need to check further, since we already resubmitted
+        fi
+
+        # Check for fatal system signal
+        if grep -q "End Fatal Exception" "$logfile"; then
+            echo "Resubmitting job num $idx with -short due to End Fatal Exception"
+            /home/llr/cms/$user/t3submit -short "job_$idx.sh"
+            continue  # No need to check further, since we already resubmitted
+        fi
         
         # Check if TrigReport is missing
         if ! grep -q "TrigReport ---------- Event  Summary ------------" "$logfile"; then

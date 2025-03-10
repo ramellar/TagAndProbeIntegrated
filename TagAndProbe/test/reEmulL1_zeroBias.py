@@ -61,9 +61,21 @@ process.source = cms.Source("PoolSource",
 
 process.schedule = cms.Schedule()
 
+# activating new HCAL corrections 01_25
+
+process.load("SimCalorimetry.HcalTrigPrimProducers.hcaltpdigi_cff")
+process.HcalTPGCoderULUT.LUTGenerationMode = cms.bool(False)
+override = "Tag,HcalL1TriggerObjectsRcd,sqlite_file:HcalL1TriggerObjects_Run3Feb2025_11.db" 
+# process.GlobalTag = (process.GlobalTag, "140X_dataRun3_Prompt_v4", override)
+# process.GlobalTag = (process.GlobalTag, "140X_dataRun3_Prompt_v4", override)
+
 # re-emulate starting from TPs (here we re-emulate also the TPs)
 from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAWsimHcalTP
 process = L1TReEmulFromRAWsimHcalTP(process)
+
+# # re-emulate starting from TPs (here we re-emulate also the TPs)
+# from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAWsimHcalTP
+# process = L1TReEmulFromRAWsimHcalTP(process)
 
 process.load(options.caloParams)
 
@@ -90,10 +102,10 @@ process.options = cms.untracked.PSet(
 )
 
 # activating new HCAL corrections 25_05_10
-process.load("SimCalorimetry.HcalTrigPrimProducers.hcaltpdigi_cff")
-process.HcalTPGCoderULUT.LUTGenerationMode = cms.bool(False)
+# process.load("SimCalorimetry.HcalTrigPrimProducers.hcaltpdigi_cff")
+# process.HcalTPGCoderULUT.LUTGenerationMode = cms.bool(False)
 
-process.GlobalTag = GlobalTag(process.GlobalTag, '140X_dataRun3_HLT_v3', 'Tag,HcalL1TriggerObjectsRcd,sqlite_file:HcalL1TriggerObjects_2024_TestingHFRespCorrsAndHEHFGains.db')
+# process.GlobalTag = GlobalTag(process.GlobalTag, '140X_dataRun3_HLT_v3', 'Tag,HcalL1TriggerObjectsRcd,sqlite_file:HcalL1TriggerObjects_2024_TestingHFRespCorrsAndHEHFGains.db')
 
 # ################# Activating the latest (02/24) HCAL response corrections ############
 # CONDDIR="/grid_mnt/vol_home/llr/cms/mchiusi/Run3preparation/Run3_2024/CMSSW_13_3_0/src/TagAndProbeIntegrated/HCAL_corr"
