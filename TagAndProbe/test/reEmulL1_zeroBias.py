@@ -66,8 +66,8 @@ process.schedule = cms.Schedule()
 process.load("SimCalorimetry.HcalTrigPrimProducers.hcaltpdigi_cff")
 process.HcalTPGCoderULUT.LUTGenerationMode = cms.bool(False)
 override = "Tag,HcalL1TriggerObjectsRcd,sqlite_file:HcalL1TriggerObjects_Run3Feb2025_11.db" 
-# process.GlobalTag = (process.GlobalTag, "140X_dataRun3_Prompt_v4", override)
-# process.GlobalTag = (process.GlobalTag, "140X_dataRun3_Prompt_v4", override)
+print("Using GlobalTag: " , "140X_dataRun3_Prompt_v4", override)
+process.GlobalTag = GlobalTag(process.GlobalTag, "140X_dataRun3_Prompt_v4", override)
 
 # re-emulate starting from TPs (here we re-emulate also the TPs)
 from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAWsimHcalTP
