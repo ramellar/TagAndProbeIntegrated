@@ -95,6 +95,7 @@ for idx, block in enumerate(fileblocks):
         cmsRun = "cmsRun "+options.objType+"_noTagAndProbe_AOD.py maxEvents=-1 inputFiles_load="+outListName+" outputFile="+outRootName+" globalTag="+globalTag+" >& "+outLogName
 
     if jobtype == "tagAndProbe":
+        # breakpoint()
         if run == "Run3": cmsRun = "cmsRun "+options.objType+"_tagAndProbeRun3.py maxEvents=-1 inputFiles_load="+outListName+" outputFile="+outRootName+" JSONfile="+JSONfile+" globalTag="+globalTag+" >& "+outLogName
         if run == "Run2": cmsRun = "cmsRun "+options.objType+"_tagAndProbeRun2.py maxEvents=-1 inputFiles_load="+outListName+" outputFile="+outRootName+" JSONfile="+JSONfile+" globalTag="+globalTag+" >& "+outLogName
 
