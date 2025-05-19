@@ -1,0 +1,5 @@
+/store/mc/Run3Winter25MiniAOD/GluGluHto2Tau_Par-MH-125_TuneCP5_13p6TeV_powheg-minlo-pythia8/MINIAODSIM/142X_mcRun3_2025_realistic_v7-v2/2820000/50e6fec5-e3ea-4ce5-9dfd-b2e56b7fb35b.root
+/store/mc/Run3Winter25MiniAOD/GluGluHto2Tau_Par-MH-125_TuneCP5_13p6TeV_powheg-minlo-pythia8/MINIAODSIM/142X_mcRun3_2025_realistic_v7-v2/2820000/9f4dc3ab-294b-42a9-869b-f0e27e800e46.root
+/store/mc/Run3Winter25MiniAOD/GluGluHto2Tau_Par-MH-125_TuneCP5_13p6TeV_powheg-minlo-pythia8/MINIAODSIM/142X_mcRun3_2025_realistic_v7-v2/2820000/307564c5-8ff0-4e9a-82fb-7f9d61d796ed.root
+/store/mc/Run3Winter25MiniAOD/GluGluHto2Tau_Par-MH-125_TuneCP5_13p6TeV_powheg-minlo-pythia8/MINIAODSIM/142X_mcRun3_2025_realistic_v7-v2/2820000/aabc488c-8027-4024-a21f-a594e550e481.root
+/store/mc/Run3Winter25MiniAOD/GluGluHto2Tau_Par-MH-125_TuneCP5_13p6TeV_powheg-minlo-pythia8/MINIAODSIM/142X_mcRun3_2025_realistic_v7-v2/2820000/50159e60-f417-4b20-9e34-fda82083d966.root
