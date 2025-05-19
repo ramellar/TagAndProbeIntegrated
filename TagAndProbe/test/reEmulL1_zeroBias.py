@@ -62,20 +62,14 @@ process.source = cms.Source("PoolSource",
 process.schedule = cms.Schedule()
 
 # activating new HCAL corrections 01_25
-
 process.load("SimCalorimetry.HcalTrigPrimProducers.hcaltpdigi_cff")
 process.HcalTPGCoderULUT.LUTGenerationMode = cms.bool(False)
 override = "Tag,HcalL1TriggerObjectsRcd,sqlite_file:HcalL1TriggerObjects_Run3Feb2025_11.db" 
-print("Using GlobalTag: " , "140X_dataRun3_Prompt_v4", override)
 process.GlobalTag = GlobalTag(process.GlobalTag, "140X_dataRun3_Prompt_v4", override)
 
 # re-emulate starting from TPs (here we re-emulate also the TPs)
 from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAWsimHcalTP
 process = L1TReEmulFromRAWsimHcalTP(process)
-
-# # re-emulate starting from TPs (here we re-emulate also the TPs)
-# from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAWsimHcalTP
-# process = L1TReEmulFromRAWsimHcalTP(process)
 
 process.load(options.caloParams)
 
@@ -100,33 +94,6 @@ if options.skipEvents >= 0:
 process.options = cms.untracked.PSet(
     wantSummary = cms.untracked.bool(True)
 )
-
-# activating new HCAL corrections 25_05_10
-# process.load("SimCalorimetry.HcalTrigPrimProducers.hcaltpdigi_cff")
-# process.HcalTPGCoderULUT.LUTGenerationMode = cms.bool(False)
-
-# process.GlobalTag = GlobalTag(process.GlobalTag, '140X_dataRun3_HLT_v3', 'Tag,HcalL1TriggerObjectsRcd,sqlite_file:HcalL1TriggerObjects_2024_TestingHFRespCorrsAndHEHFGains.db')
-
-# ################# Activating the latest (02/24) HCAL response corrections ############
-# CONDDIR="/grid_mnt/vol_home/llr/cms/mchiusi/Run3preparation/Run3_2024/CMSSW_13_3_0/src/TagAndProbeIntegrated/HCAL_corr"
-# 
-# process.load('EventFilter.L1TRawToDigi.caloStage2Digis_cfi')
-# process.caloStage2Digis.InputLabel = cms.InputTag('rawDataCollector')
-# 
-# process.es_prefer = cms.ESPrefer('HcalTextCalibrations','es_ascii')
-# process.es_ascii = cms.ESSource('HcalTextCalibrations',
-#    input = cms.VPSet(
-#       cms.PSet(
-#          object = cms.string('RespCorrs'),
-# 	 file   = cms.FileInPath(CONDDIR+'/RespCorrs/HcalRespCorrs_2023_v3.0_data.txt')
-#       ),
-#       cms.PSet(
-#          object = cms.string('Gains'),
-#          file   = cms.FileInPath(CONDDIR+'/Gains/HcalGains_2023_v2.0_data.txt')
-#       ),
-#    )
-# )
-# #######################################################################################
 
 process.p = cms.Path (
     process.RawToDigi +
