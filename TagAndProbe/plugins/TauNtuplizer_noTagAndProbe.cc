@@ -104,6 +104,7 @@ private:
   int _l1tQual;
   float _l1tPt;
   float _l1tEta;
+  float _l1tE;
   float _l1tPhi;
   int _l1tIso;
   int _l1tEmuQual;
@@ -310,6 +311,7 @@ void TauNtuplizer_noTagAndProbe::Initialize() {
   this -> _hltPhi = 666;
   this -> _l1tPt = -1;
   this -> _l1tEta = 666;
+  this -> _l1tE = -1;
   this -> _l1tPhi = 666;
   this -> _l1tQual = -1;
   this -> _l1tIso = -1;
@@ -398,6 +400,7 @@ void TauNtuplizer_noTagAndProbe::beginJob()
   this -> _tree -> Branch("hltPhi", &_hltPhi, "hltPhi/F");
   this -> _tree -> Branch("l1tPt",  &_l1tPt,  "l1tPt/F");
   this -> _tree -> Branch("l1tEta", &_l1tEta, "l1tEta/F");
+  this -> _tree -> Branch("l1tE", &_l1tE, "l1tE/F");
   this -> _tree -> Branch("l1tPhi", &_l1tPhi, "l1tPhi/F");
   this -> _tree -> Branch("l1tQual", &_l1tQual, "l1tQual/I");
   this -> _tree -> Branch("l1tIso", &_l1tIso, "l1tIso/I");
@@ -617,6 +620,7 @@ void TauNtuplizer_noTagAndProbe::analyze(const edm::Event& iEvent, const edm::Ev
 	  minDR = dR; //Uncomment for new match algo
 	  this -> _l1tPt = l1tTau.pt();
 	  this -> _l1tEta = l1tTau.eta();
+	  this -> _l1tE = l1tTau.energy();
 	  this -> _l1tPhi = l1tTau.phi();
 	  this -> _l1tIso = l1tTau.hwIso();
 	  this -> _l1tQual = l1tTau.hwQual();
