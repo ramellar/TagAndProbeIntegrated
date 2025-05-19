@@ -35,7 +35,7 @@ goodTaus = cms.EDFilter("PATTauRefSelector",
                 
                 # to be used for VBFHToTauTau, GluGluHToTauTau and similar datasets
                 '&& tauID("byMediumDeepTau2018v2p5VSmu") > 0.5 ' # anti-Muon medium
-                '&& tauID("byLooseDeepTau2018v2p5VSmu") > 0.5 ' # anti-Ele loose
+                '&& tauID("byLooseDeepTau2018v2p5VSe") > 0.5 ' # anti-Ele loose
 
                 # to be used for DYLL and similar datasets
                 # '&& tauID("byTightDeepTau2018v2p5VSmu") > 0.5 ' # anti-Muon tight
