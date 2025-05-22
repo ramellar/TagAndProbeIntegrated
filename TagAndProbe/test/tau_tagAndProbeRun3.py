@@ -21,7 +21,7 @@ options.register ('caloParams',
                   VarParsing.VarParsing.varType.string,          # string, int, or float
                   "which caloParams to use?")
 options.register ('globalTag',
-                  "140X_dataRun3_v2", # default value
+                  "150X_dataRun3_Prompt_v1", # default value
                   VarParsing.VarParsing.multiplicity.singleton, # singleton or list
                   VarParsing.VarParsing.varType.string,          # string, int, or float
                   "which globalTag to use?")

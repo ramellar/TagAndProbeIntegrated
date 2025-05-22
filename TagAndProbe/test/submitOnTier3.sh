@@ -14,6 +14,20 @@ source /opt/exp_soft/cms/t3/t3setup
 ##                         --caloParams \
 ##                         --globalTag
 
+
+## 2025 checking unpacked ###
+
+python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2025_EraBfrom391884_EraC_MINIAOD.txt\
+                        --outFolder unpacked_2025/Run2025_EraBfrom391884_EraC_MINIAOD/ntuples \
+                        --objType tau \
+                        --jobType tagAndProbe \
+                        --inJson Collisions25_13p6TeV_391658_392382_DCSOnly_TkPx.json \
+                        --nJobs 339 \
+                        --run Run3 \
+                        --queue short \
+                        --globalTag 150X_dataRun3_Prompt_v1 \
+
+
 ## 2024 checking unpacked ###
 
 # python submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024B-PromptReco-v1_MINIAOD.txt \
@@ -511,25 +525,25 @@ source /opt/exp_soft/cms/t3/t3setup
 #                         --globalTag 124X_dataRun3_Prompt_v10 \
 #                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2022_v0_6_cfi
 
-python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024I_RAW_386604.txt \
-                        --outFolder 2024I-data/Zero_bias_run_386604_caloParams_2025_conservative_HCALcFeb_v3_iET_0p9_22_37_cfi_corrected_resolution \
-                        --jobType reEmulL1_zeroBias \
-                        --inJson None \
-                        --nJobs 655 \
-                        --run Run3 \
-                        --queue short \
-                        --globalTag 140X_dataRun3_Prompt_v4 \
-                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2025_conservative_HCALcFeb_v3_iET_0p9_22_37_corrected_resolution_cfi
+# python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024I_RAW_386604.txt \
+#                         --outFolder 2024I-data/Zero_bias_run_386604_caloParams_2025_conservative_HCALcFeb_v3_iET_0p9_22_37_cfi_corrected_resolution \
+#                         --jobType reEmulL1_zeroBias \
+#                         --inJson None \
+#                         --nJobs 655 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 140X_dataRun3_Prompt_v4 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2025_conservative_HCALcFeb_v3_iET_0p9_22_37_corrected_resolution_cfi
 
-python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024I_RAW.txt \
-                        --outFolder 2024I-data/Re-emu-caloParams_2025_conservative_HCALcFeb_v3_iET_effMin0p9_eMin22_eMax37_corrected_resolution \
-                        --jobType reEmulL1_zeroBias \
-                        --inJson None \
-                        --nJobs 20000 \
-                        --run Run3 \
-                        --queue short \
-                        --globalTag 140X_dataRun3_Prompt_v4 \
-                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2025_conservative_HCALcFeb_v3_iET_0p9_22_37_corrected_resolution_cfi
+# python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024I_RAW.txt \
+#                         --outFolder 2024I-data/Re-emu-caloParams_2025_conservative_HCALcFeb_v3_iET_effMin0p9_eMin22_eMax37_corrected_resolution \
+#                         --jobType reEmulL1_zeroBias \
+#                         --inJson None \
+#                         --nJobs 20000 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 140X_dataRun3_Prompt_v4 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2025_conservative_HCALcFeb_v3_iET_0p9_22_37_corrected_resolution_cfi
 
 
 # ########################################################################################

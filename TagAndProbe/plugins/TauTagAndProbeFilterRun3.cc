@@ -106,7 +106,7 @@ bool TauTagAndProbeFilterRun3::filter(edm::Event & iEvent, edm::EventSetup const
         if (deltaR(*tau, *mu) < 0.5) continue;
 
         // store iso against jet and idx 
-        float isoMVA = tau->tauID("byDeepTau2017v2p1VSjetraw");
+        float isoMVA = tau->tauID("byDeepTau2018v2p5VSjetraw");
         tausIdxPtVec.push_back(make_pair(isoMVA, itau));
     }
 

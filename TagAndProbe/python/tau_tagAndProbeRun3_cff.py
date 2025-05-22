@@ -163,10 +163,10 @@ goodTaus = cms.EDFilter("PATTauRefSelector",
         cut = cms.string(
                 'pt > 20 && abs(eta) < 2.1 ' #kinematics
                 '&& abs(charge) > 0 && abs(charge) < 2 ' #sometimes 2 prongs have charge != 1
-                '&& tauID("decayModeFinding") > 0.5 ' # tau ID
-                '&& tauID("byVVLooseDeepTau2017v2p1VSjet") > 0.5 ' # anti-Jet VVLoose (medium)
-                '&& tauID("byVLooseDeepTau2017v2p1VSmu") > 0.5 ' # anti-Muon VLoose (tight)
-                '&& tauID("byVVVLooseDeepTau2017v2p1VSe") > 0.5 ' # anti-Ele VVVloose (Loose)
+                '&& tauID("decayModeFindingNewDMs") > 0.5 ' # tau ID
+                '&& tauID("byVVLooseDeepTau2018v2p5VSjet") > 0.5 ' # anti-Jet VVLoose (medium)
+                '&& tauID("byVLooseDeepTau2018v2p5VSmu") > 0.5 ' # anti-Muon VLoose (tight)
+                '&& tauID("byVVVLooseDeepTau2018v2p5VSe") > 0.5 ' # anti-Ele VVVloose (Loose)
                 # 'pt>0 && abs(eta) < 2.1'
         ),
         filter = cms.bool(True)
