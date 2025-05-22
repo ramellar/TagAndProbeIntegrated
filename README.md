@@ -6,8 +6,8 @@ This is based on the following two prior tools:
 
 ## Install instructions
 ```bash
-cmsrel CMSSW_13_3_0
-cd CMSSW_13_3_0/src
+cmsrel CMSSW_15_0_6
+cd CMSSW_15_0_6/src
 cmsenv
 git cms-init
 git cms-addpkg L1Trigger/L1TCalorimeter
@@ -22,7 +22,7 @@ wget https://raw.githubusercontent.com/cms-data/L1Trigger-L1TCalorimeter/master/
 cd -
 git clone https://github.com/cms-l1t-offline/L1Trigger-L1TCalorimeter.git L1Trigger/L1TCalorimeter/data
 
-git clone git@github.com:mchiusi/TagAndProbeIntegrated.git -b CMSSW_13_3_0
+git clone git@github.com:ramellar/TagAndProbeIntegrated.git -b CMSSW_15_0_6
 
 git cms-checkdeps -A -a
 scram b -j 8
