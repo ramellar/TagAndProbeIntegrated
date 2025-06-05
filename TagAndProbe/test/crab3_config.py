@@ -18,9 +18,10 @@ config.Data.secondaryInputDataset= '/Muon0/Run2025C-v1/RAW'
 
 config.Data.inputDBS = 'global'
 config.Data.splitting = 'EventAwareLumiBased'
-config.Data.unitsPerJob = 10000 #number of events per jobs
+config.Data.unitsPerJob = 25000 #number of events per jobs
 config.Data.totalUnits = -1 #number of event
 config.Data.outLFNDirBase = '/store/group/dpg_trigger/comm_trigger/L1Trigger/athachay/crabOutputStorage/2025/Data/'
+config.Data.runRange = '392672-392997'
 config.Data.lumiMask = 'Collisions25_13p6TeV_Latest.json'
 config.Data.publication = False
 config.Data.allowNonValidInputDataset = True

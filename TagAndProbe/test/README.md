@@ -15,3 +15,6 @@ crab submit crab3_config.py
 ```
 It is always good practice to submit the crab-job outside of `src` directory
 
+## Making the MiniAOD-RAW skim
+The `tau_tagAndProbeRun3_skimmer.py` can be used to make a skim of the events used for the re-emulation of L1 objects as well as do the offline selection on MiniAOD-Taus. The output file from this can be used to run `tau_tagAndProbeRun3.py`
+This file can also be submitted to crab for skimming a good set of taus
