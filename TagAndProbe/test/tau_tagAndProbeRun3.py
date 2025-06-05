@@ -4,6 +4,11 @@ import FWCore.ParameterSet.Config as cms
 from Configuration.StandardSequences.Eras import eras
 from Configuration.AlCa.autoCond import autoCond
 
+isMC=False
+doReEmulation=True
+CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_cfi"
+CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_newTauIsoLUT_cfi"
+
 options = VarParsing.VarParsing ('analysis')
 options.register ('skipEvents',
                   -1, # default value
@@ -31,25 +36,41 @@ options.maxEvents  = -999
 options.parseArguments()
 
 process = cms.Process("TagAndProbe", eras.Run3)
-process.load('Configuration.StandardSequences.Services_cff')
-process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
-process.load('FWCore.MessageService.MessageLogger_cfi')
+process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 process.load('Configuration.EventContent.EventContent_cff')
+process.load('Configuration.StandardSequences.EndOfProcess_cff')
+process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('Configuration.StandardSequences.GeometryRecoDB_cff')
 process.load('Configuration.StandardSequences.MagneticField_AutoFromDBCurrent_cff')
 process.load('Configuration.StandardSequences.RawToDigi_Data_cff')
-process.load('Configuration.StandardSequences.EndOfProcess_cff')
-process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
+process.load('Configuration.StandardSequences.Services_cff')
+process.load('FWCore.MessageService.MessageLogger_cfi')
+process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.load('TagAndProbeIntegrated.TagAndProbe.tau_tagAndProbeRun3_cff')
+
+
 #process.load(options.caloParams)
 
 process.GlobalTag.globaltag = options.globalTag
 
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
-        '/store/data/Run2024B/Muon0/MINIAOD/PromptReco-v1/000/379/253/00000/6dab757f-5a09-4e35-8a0f-1ba62ba9c20c.root'
+        '/store/data/Run2025C/Muon0/MINIAOD/PromptReco-v1/000/392/751/00000/41f801e8-a2cb-4fac-a8c8-a19157b8ac24.root'
     ),
 )
+
+if doReEmulation:
+    process.source.secondaryFileNames = cms.untracked.vstring(
+        "/store/data/Run2025C/Muon0/RAW/v1/000/392/751/00000/0363f108-02cc-4957-ac1e-90554b2b28b6.root",
+        "/store/data/Run2025C/Muon0/RAW/v1/000/392/751/00000/078462ad-ea85-4775-9980-beb6efad43d6.root",
+        "/store/data/Run2025C/Muon0/RAW/v1/000/392/751/00000/1860a11d-dccb-40b6-8a41-3589c9fd3a00.root",
+        "/store/data/Run2025C/Muon0/RAW/v1/000/392/751/00000/39ff3c4d-477c-4f13-bd35-cea2c388dca4.root",
+        "/store/data/Run2025C/Muon0/RAW/v1/000/392/751/00000/7bf79f4d-fd77-41ee-bdf4-de0901567233.root",
+        "/store/data/Run2025C/Muon0/RAW/v1/000/392/751/00000/ae828996-09b1-44a6-b48b-7108e580446f.root",
+        "/store/data/Run2025C/Muon0/RAW/v1/000/392/751/00000/c5633988-8898-49df-a1d5-9b6bcbb6f287.root",
+        "/store/data/Run2025C/Muon0/RAW/v1/000/392/751/00000/c6bf4ab8-ae16-4902-a1ec-73eb0e05cc6b.root"
+    )
+
 
 if options.JSONfile:
     print("Using JSON: " , options.JSONfile)
@@ -59,26 +80,52 @@ if options.inputFiles:
     process.source.fileNames = cms.untracked.vstring(options.inputFiles)
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(-1)
+    input = cms.untracked.int32(150)
 )
 
 if options.maxEvents >= -1:
     process.maxEvents.input = cms.untracked.int32(options.maxEvents)
 if options.skipEvents >= 0:
+    print("Skipping ",options.skipEvents," events")
     process.source.skipEvents = cms.untracked.uint32(options.skipEvents)
 
 process.options = cms.untracked.PSet(
     wantSummary = cms.untracked.bool(True)
 )
 
+process.schedule = cms.Schedule()
+## L1 emulation stuff
+
+
 process.p = cms.Path(
     process.TAndPseq +
     process.NtupleSeq
 )
 
+if doReEmulation:
+    if not isMC:
+        from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAW 
+        print(L1TReEmulFromRAW)
+        process = L1TReEmulFromRAW(process)
+    else:
+        from L1Trigger.Configuration.customiseReEmul import L1TReEmulMCFromRAW
+        process = L1TReEmulMCFromRAW(process) 
+        from L1Trigger.Configuration.customiseUtils import L1TTurnOffUnpackStage2GtGmtAndCalo 
+        process = L1TTurnOffUnpackStage2GtGmtAndCalo(process)
+    process.load( CALOPARAMS )
+    process.p = cms.Path(
+        process.TAndPseq +
+        process.RawToDigi +
+        process.L1TReEmul +
+        process.NtupleSeq
+    )
+process.schedule = cms.Schedule(process.p)
+
+
+
 # Silence output
 process.load("FWCore.MessageService.MessageLogger_cfi")
-process.MessageLogger.cerr.FwkReport.reportEvery = 1000
+process.MessageLogger.cerr.FwkReport.reportEvery = 100
 
 # Adding ntuplizer
 process.TFileService=cms.Service('TFileService',fileName=cms.string(options.outputFile))
