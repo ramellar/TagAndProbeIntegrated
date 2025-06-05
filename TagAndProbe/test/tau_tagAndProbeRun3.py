@@ -93,7 +93,6 @@ process.options = cms.untracked.PSet(
     wantSummary = cms.untracked.bool(True)
 )
 
-process.schedule = cms.Schedule()
 ## L1 emulation stuff
 
 
@@ -103,6 +102,7 @@ process.p = cms.Path(
 )
 
 if doReEmulation:
+    process.schedule = cms.Schedule()
     if not isMC:
         from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAW 
         print(L1TReEmulFromRAW)
