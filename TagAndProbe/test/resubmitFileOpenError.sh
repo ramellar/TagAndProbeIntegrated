@@ -30,28 +30,36 @@ do
         # Check for FileOpenError
         if grep -q "An exception of category 'FallbackFileOpenError' occurred while" "$logfile"; then
             echo "Resubmitting job num $idx with -short due to FileOpenError"
-            /home/llr/cms/$user/t3submit -short "job_$idx.sh"
+            mv "log_$idx.txt" Failing_datasets/log_$idx.txt
+            mv "Ntuple_$idx.root" Failing_datasets/Ntuple_$idx.root
+            # /home/llr/cms/$user/t3submit -short "job_$idx.sh"
             continue  # No need to check further, since we already resubmitted
         fi
 
         # Check for fatal system signal
         if grep -q "A fatal system signal has occurred: abort signal" "$logfile"; then
             echo "Resubmitting job num $idx with -short due to fatal system signal"
-            /home/llr/cms/$user/t3submit -short "job_$idx.sh"
+            mv "log_$idx.txt" Failing_datasets/log_$idx.txt
+            mv "Ntuple_$idx.root" Failing_datasets/Ntuple_$idx.root
+            # /home/llr/cms/$user/t3submit -short "job_$idx.sh"
             continue  # No need to check further, since we already resubmitted
         fi
 
         # Check for fatal system signal
         if grep -q "End Fatal Exception" "$logfile"; then
             echo "Resubmitting job num $idx with -short due to End Fatal Exception"
-            /home/llr/cms/$user/t3submit -short "job_$idx.sh"
+            mv "log_$idx.txt" Failing_datasets/log_$idx.txt
+            mv "Ntuple_$idx.root" Failing_datasets/Ntuple_$idx.root
+            # /home/llr/cms/$user/t3submit -short "job_$idx.sh"
             continue  # No need to check further, since we already resubmitted
         fi
         
         # Check if TrigReport is missing
         if ! grep -q "TrigReport ---------- Event  Summary ------------" "$logfile"; then
             echo "Resubmitting job num $idx with -long due to missing TrigReport"
-            /home/llr/cms/$user/t3submit -long "job_$idx.sh"
+            mv "log_$idx.txt" Failing_datasets/log_$idx.txt
+            mv "Ntuple_$idx.root" Failing_datasets/Ntuple_$idx.root
+            # /home/llr/cms/$user/t3submit -long "job_$idx.sh"
         fi
     done
     cd - > /dev/null  # Return to the previous directory, suppress output

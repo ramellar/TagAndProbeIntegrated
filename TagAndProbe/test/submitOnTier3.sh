@@ -17,15 +17,37 @@ source /opt/exp_soft/cms/t3/t3setup
 
 ## 2025 checking unpacked ###
 
-python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2025_EraBfrom391884_EraC_MINIAOD.txt\
-                        --outFolder unpacked_2025/Run2025_EraBfrom391884_EraC_MINIAOD/ntuples \
+python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2025C_MINIAOD.txt \
+                        --outFolder unpacked_2025/Run2025_EraC/ntuples \
                         --objType tau \
                         --jobType tagAndProbe \
-                        --inJson Collisions25_13p6TeV_391658_392382_DCSOnly_TkPx.json \
-                        --nJobs 339 \
+                        --inJson Collisions25_13p6TeV_Latest.json \
+                        --nJobs 3000 \
                         --run Run3 \
                         --queue short \
                         --globalTag 150X_dataRun3_Prompt_v1 \
+
+python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2025C_new_RAW.txt \
+                        --outFolder unpacked_2025/Run2025C_Muon0_RAW/ntuples \
+                        --objType tau \
+                        --jobType reEmulL1_zeroBias \
+                        --inJson  Collisions25_13p6TeV_Latest.json \
+                        --nJobs 12000 \
+                        --run Run3 \
+                        --queue short \
+                        --globalTag 150X_dataRun3_Prompt_v1 \
+                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_0p7_LUT_cfi
+
+python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_1_Run2025C_new_RAW.txt \
+                        --outFolder unpacked_2025/Run2025C_Muon1_RAW/ntuples \
+                        --objType tau \
+                        --jobType reEmulL1_zeroBias \
+                        --inJson  Collisions25_13p6TeV_Latest.json \
+                        --nJobs 12000 \
+                        --run Run3 \
+                        --queue short \
+                        --globalTag 150X_dataRun3_Prompt_v1 \
+                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_0p7_LUT_cfi
 
 
 ## 2024 checking unpacked ###
@@ -348,7 +370,7 @@ python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2025_EraBfrom39
 #                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2022_v0_1_cfi
 
 # python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2024I_MINIAOD.txt \
-#                         --outFolder 2024I-data/MiniAOD \
+#                         --outFolder 2024I-data/ntuple/ \
 #                         --objType tau \
 #                         --jobType tagAndProbe \
 #                         --inJson 2024I_Golden.json \
