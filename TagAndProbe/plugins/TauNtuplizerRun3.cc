@@ -545,7 +545,7 @@ void TauNtuplizerRun3::endRun(edm::Run const& iRun, edm::EventSetup const& iSetu
 void TauNtuplizerRun3::analyze(const edm::Event& iEvent, const edm::EventSetup& eSetup)
 {
     this -> Initialize();
-
+    std::cout<<"Reached the ntuplizer ! \n";
     _indexevents = iEvent.id().event();
     _runNumber = iEvent.id().run();
     _lumi = iEvent.luminosityBlock();
@@ -833,7 +833,9 @@ void TauNtuplizerRun3::analyze(const edm::Event& iEvent, const edm::EventSetup& 
     }
     std::cout<<"     >  Filling NTUPLE : "<<foundMuTrigger<<"\n";
     // store only if the event was triggered by the TAG paths required
-    if(foundMuTrigger) _tree -> Fill();
+    if(foundMuTrigger) {
+        _tree -> Fill();
+    }
 
 }
 
