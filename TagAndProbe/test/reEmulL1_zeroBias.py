@@ -6,6 +6,8 @@ import FWCore.ParameterSet.Config as cms
 from Configuration.AlCa.GlobalTag import GlobalTag
 from Configuration.StandardSequences.Eras import eras
 
+CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_Iso_eff0p7_17_30_LUT_cfi"
+
 options = VarParsing.VarParsing ('analysis')
 options.register ('skipEvents',
                   -1, # default value
@@ -61,17 +63,21 @@ process.source = cms.Source("PoolSource",
 
 process.schedule = cms.Schedule()
 
-# activating new HCAL corrections 01_25
-process.load("SimCalorimetry.HcalTrigPrimProducers.hcaltpdigi_cff")
-process.HcalTPGCoderULUT.LUTGenerationMode = cms.bool(False)
-override = "Tag,HcalL1TriggerObjectsRcd,sqlite_file:HcalL1TriggerObjects_Run3Feb2025_11.db" 
-process.GlobalTag = GlobalTag(process.GlobalTag, "140X_dataRun3_Prompt_v4", override)
+# # activating new HCAL corrections 01_25
+# process.load("SimCalorimetry.HcalTrigPrimProducers.hcaltpdigi_cff")
+# process.HcalTPGCoderULUT.LUTGenerationMode = cms.bool(False)
+# override = "Tag,HcalL1TriggerObjectsRcd,sqlite_file:HcalL1TriggerObjects_Run3Feb2025_11.db" 
+# process.GlobalTag = GlobalTag(process.GlobalTag, "150X_dataRun3_Prompt_v1", override)
 
-# re-emulate starting from TPs (here we re-emulate also the TPs)
-from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAWsimHcalTP
-process = L1TReEmulFromRAWsimHcalTP(process)
+# # re-emulate starting from TPs (here we re-emulate also the TPs)
+# from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAWsimHcalTP
+# process = L1TReEmulFromRAWsimHcalTP(process)
 
-process.load(options.caloParams)
+#re-emulate without re emulating the TPs
+from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAW
+process = L1TReEmulFromRAW(process)
+
+process.load(CALOPARAMS)
 
 ############################
 
