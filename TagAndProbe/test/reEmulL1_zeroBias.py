@@ -6,7 +6,8 @@ import FWCore.ParameterSet.Config as cms
 from Configuration.AlCa.GlobalTag import GlobalTag
 from Configuration.StandardSequences.Eras import eras
 
-CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_Iso_eff0p7_17_30_LUT_cfi"
+# CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_Iso_eff0p7_17_30_LUT_cfi"
+CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_Iso_eff0p7_12_26_LUT_cfi"
 
 options = VarParsing.VarParsing ('analysis')
 options.register ('skipEvents',
@@ -25,7 +26,7 @@ options.register ('caloParams',
                   VarParsing.VarParsing.varType.string,          # string, int, or float
                   "which caloParams to use?")
 options.register ('globalTag',
-                  "", # default value
+                  "150X_dataRun3_Prompt_v1", # default value
                   VarParsing.VarParsing.multiplicity.singleton, # singleton or list
                   VarParsing.VarParsing.varType.string,          # string, int, or float
                   "which globalTag to use?")

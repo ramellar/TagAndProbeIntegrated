@@ -17,37 +17,37 @@ source /opt/exp_soft/cms/t3/t3setup
 
 ## 2025 checking unpacked ###
 
-python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2025C_MINIAOD.txt \
-                        --outFolder unpacked_2025/Run2025_EraC/ntuples \
-                        --objType tau \
-                        --jobType tagAndProbe \
-                        --inJson Collisions25_13p6TeV_Latest.json \
-                        --nJobs 3000 \
-                        --run Run3 \
-                        --queue short \
-                        --globalTag 150X_dataRun3_Prompt_v1 \
+# python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2025C_MINIAOD.txt \
+#                         --outFolder unpacked_2025/Run2025_EraC/ntuples \
+#                         --objType tau \
+#                         --jobType tagAndProbe \
+#                         --inJson Collisions25_13p6TeV_Latest.json \
+#                         --nJobs 3000 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 150X_dataRun3_Prompt_v1 \
 
-python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2025C_new_RAW.txt \
-                        --outFolder unpacked_2025/Run2025C_Muon0_RAW/ntuples \
-                        --objType tau \
-                        --jobType reEmulL1_zeroBias \
-                        --inJson  Collisions25_13p6TeV_Latest.json \
-                        --nJobs 12000 \
-                        --run Run3 \
-                        --queue short \
-                        --globalTag 150X_dataRun3_Prompt_v1 \
-                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_0p7_LUT_cfi
+# python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_Run2025C_new_RAW.txt \
+#                         --outFolder unpacked_2025/Run2025C_Muon0_RAW/ntuples \
+#                         --objType tau \
+#                         --jobType reEmulL1_zeroBias \
+#                         --inJson  Collisions25_13p6TeV_Latest.json \
+#                         --nJobs 12000 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 150X_dataRun3_Prompt_v1 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_0p7_LUT_cfi
 
-python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_1_Run2025C_new_RAW.txt \
-                        --outFolder unpacked_2025/Run2025C_Muon1_RAW/ntuples \
-                        --objType tau \
-                        --jobType reEmulL1_zeroBias \
-                        --inJson  Collisions25_13p6TeV_Latest.json \
-                        --nJobs 12000 \
-                        --run Run3 \
-                        --queue short \
-                        --globalTag 150X_dataRun3_Prompt_v1 \
-                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_0p7_LUT_cfi
+# python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_1_Run2025C_new_RAW.txt \
+#                         --outFolder unpacked_2025/Run2025C_Muon1_RAW/ntuples \
+#                         --objType tau \
+#                         --jobType reEmulL1_zeroBias \
+#                         --inJson  Collisions25_13p6TeV_Latest.json \
+#                         --nJobs 12000 \
+#                         --run Run3 \
+#                         --queue short \
+#                         --globalTag 150X_dataRun3_Prompt_v1 \
+#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_0p7_LUT_cfi
 
 
 ## 2024 checking unpacked ###
@@ -469,16 +469,16 @@ python3 submitOnTier3.py --inFileList muon_datasets_Run3/Muon_1_Run2025C_new_RAW
 ####################################### ZeroBias 13TeV #######################################
 ##############################################################################################
 
-# python submitOnTier3.py --inFileList EphemeralZeroBias_Run3/EphemeralZeroBias_2024C_RAW_379420.txt \
-#                         --outFolder Run3_2024/unpacked_2024/Muon_Run2024C-v1_MINIAOD/rates_379420 \
-#                         --objType tau \
-#                         --jobType reEmulL1_zeroBias \
-#                         --inJson Collisions24_13p6TeV_378981_380074_DCSOnly_TkPx.json \
-#                         --nJobs 1000 \
-#                         --run Run3 \
-#                         --queue short \
-#                         --globalTag 140X_dataRun3_Prompt_v2 \
-#                         --caloParams L1Trigger.L1TCalorimeter.caloParams_2023_v0_4_2024EGv1TAUv0cfi
+python3 submitOnTier3.py --inFileList EphemeralZeroBias_Run3/ZeroBias_RAW_392295.txt \
+                        --outFolder ZeroBias_2025C_392295_0p7_12_26/ntuples \
+                        --objType tau \
+                        --jobType reEmulL1_zeroBias \
+                        --inJson Collisions25_13p6TeV_Latest.json \
+                        --nJobs 476 \
+                        --run Run3 \
+                        --queue short \
+                        --globalTag 150X_dataRun3_Prompt_v1 \
+                        --caloParams L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_Iso_eff0p7_12_26_LUT_cfi
 # 
 # python submitOnTier3.py --inFileList EphemeralZeroBias_Run2/EphemeralZeroBias_2018D_Run323775.txt \
 #                         --outFolder Run3preparation_2022/EphemeralZeroBias_2018D_Run323775_allBXbits__RAW \
