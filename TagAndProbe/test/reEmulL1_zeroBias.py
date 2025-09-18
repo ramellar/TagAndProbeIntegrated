@@ -7,7 +7,7 @@ from Configuration.AlCa.GlobalTag import GlobalTag
 from Configuration.StandardSequences.Eras import eras
 
 # CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_Iso_eff0p7_17_30_LUT_cfi"
-CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_Iso_eff0p7_12_26_LUT_cfi"
+CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_Iso_eff0p7_18_27_LUT_cfi"
 
 options = VarParsing.VarParsing ('analysis')
 options.register ('skipEvents',
@@ -78,7 +78,7 @@ process.schedule = cms.Schedule()
 from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAW
 process = L1TReEmulFromRAW(process)
 
-process.load(CALOPARAMS)
+# process.load(CALOPARAMS)
 
 ############################
 

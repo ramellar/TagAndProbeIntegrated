@@ -5,10 +5,10 @@ from Configuration.StandardSequences.Eras import eras
 from Configuration.AlCa.autoCond import autoCond
 
 isMC=False
-doReEmulation=True
+doReEmulation=False
 # CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_cfi"
 # CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_newTauIsoLUT_cfi"
-CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_Iso_eff0p7_18_27_LUT_cfi"
+# CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_Iso_eff0p7_18_27_LUT_cfi"
 
 options = VarParsing.VarParsing ('analysis')
 options.register ('skipEvents',
@@ -49,9 +49,7 @@ process.load('FWCore.MessageService.MessageLogger_cfi')
 process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.load('TagAndProbeIntegrated.TagAndProbe.tau_tagAndProbeRun3_cff')
 
-
-#process.load(options.caloParams)
-
+# process.load(options.caloParams)
 process.GlobalTag.globaltag = options.globalTag
 
 process.source = cms.Source("PoolSource",
@@ -95,8 +93,6 @@ process.options = cms.untracked.PSet(
 )
 
 ## L1 emulation stuff
-
-
 process.p = cms.Path(
     process.TAndPseq +
     process.NtupleSeq
@@ -113,7 +109,7 @@ if doReEmulation:
         process = L1TReEmulMCFromRAW(process) 
         from L1Trigger.Configuration.customiseUtils import L1TTurnOffUnpackStage2GtGmtAndCalo 
         process = L1TTurnOffUnpackStage2GtGmtAndCalo(process)
-    process.load( CALOPARAMS )
+    # process.load( CALOPARAMS )
     process.p = cms.Path(
         process.TAndPseq +
         process.RawToDigi +
@@ -121,7 +117,6 @@ if doReEmulation:
         process.NtupleSeq
     )
 process.schedule = cms.Schedule(process.p)
-
 
 
 # Silence output
