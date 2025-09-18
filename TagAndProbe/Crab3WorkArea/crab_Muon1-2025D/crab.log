@@ -1,0 +1,133 @@
+DEBUG 2025-08-06 22:17:32.219 UTC: 	 CRAB Client version: v3.250522
+DEBUG 2025-08-06 22:17:32.220 UTC: 	 Running on: Linux llrui01.in2p3.fr 5.14.0-427.37.1.el9_4.x86_64 #1 SMP PREEMPT_DYNAMIC Tue Sep 24 17:44:03 EDT 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-08-06 22:17:32.220 UTC: 	 Not using Singularity
+DEBUG 2025-08-06 22:17:32.220 UTC: 	 Operating System: AlmaLinux 9.4 (Seafoam Ocelot)
+DEBUG 2025-08-06 22:17:32.220 UTC: 	 Executing command: 'submit'
+DEBUG 2025-08-06 22:17:32.220 UTC: 	 Found CRAB cache file /home/llr/cms/amella/.crab3
+INFO 2025-08-06 22:17:32.251 UTC: 	 Will use CRAB configuration file crab_config/crab3_config_miniAOD.py
+DEBUG 2025-08-06 22:17:32.251 UTC: 	 Loading CRAB configuration file.
+DEBUG 2025-08-06 22:17:32.257 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+DEBUG 2025-08-06 22:17:32.278 UTC: 	 Checking credentials
+DEBUG 2025-08-06 22:17:32.278 UTC: 	 Found proxy file /tmp/x509up_u1765
+DEBUG 2025-08-06 22:17:32.278 UTC: 	 Making sure it has proper VOMS extension
+DEBUG 2025-08-06 22:17:32.278 UTC: 	 Executing command :
+ voms-proxy-info --vo --file /tmp/x509up_u1765
+DEBUG 2025-08-06 22:17:32.578 UTC: 	 output : cms
+
+ error: 
+ retcode : 0
+DEBUG 2025-08-06 22:17:32.578 UTC: 	 Getting proxy life time left
+DEBUG 2025-08-06 22:17:32.579 UTC: 	 Executing command :
+ voms-proxy-info --actimeleft --timeleft --file /tmp/x509up_u1765
+DEBUG 2025-08-06 22:17:32.867 UTC: 	 output : 43175
+43175
+
+ error: 
+ retcode : 0
+DEBUG 2025-08-06 22:17:32.868 UTC: 	 Proxy valid for 11:59:35 hours
+DEBUG 2025-08-06 22:17:32.868 UTC: 	 Encoded data for curl request: subresource=delegatedn
+DEBUG 2025-08-06 22:17:33.065 UTC: 	 Registering user credentials on myproxy for /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+DEBUG 2025-08-06 22:17:33.065 UTC: 	 Executing command :
+ voms-proxy-info --identity --file /tmp/x509up_u1765
+DEBUG 2025-08-06 22:17:33.354 UTC: 	 output : /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ramellar/CN=858721/CN=Ruth Amella Ranz
+
+ error: 
+ retcode : 0
+DEBUG 2025-08-06 22:17:33.354 UTC: 	 Getting myproxy life time left for efbf387e5cb8de285620e9734d4b82f2cd3bae33
+DEBUG 2025-08-06 22:17:33.354 UTC: 	 Executing command :
+ myproxy-info -s myproxy.cern.ch -l efbf387e5cb8de285620e9734d4b82f2cd3bae33
+DEBUG 2025-08-06 22:17:33.829 UTC: 	 output : username: efbf387e5cb8de285620e9734d4b82f2cd3bae33
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ramellar/CN=858721/CN=Ruth Amella Ranz
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  timeleft: 0:00:00
+
+ error: 
+ retcode : 0
+DEBUG 2025-08-06 22:17:33.829 UTC: 	 Myproxy is valid: 0
+DEBUG 2025-08-06 22:17:33.829 UTC: 	 Executing command :
+ openssl x509 -noout -dates -in ~/.globus/usercert.pem
+DEBUG 2025-08-06 22:17:33.851 UTC: 	 output : notBefore=Oct  4 09:00:48 2024 GMT
+notAfter=Nov  8 09:00:48 2025 GMT
+
+ error: 
+ retcode : 0
+DEBUG 2025-08-06 22:17:33.861 UTC: 	 Delegating a myproxy for 720:00 hours
+DEBUG 2025-08-06 22:17:33.861 UTC: 	 Executing command :
+ export GT_PROXY_MODE=rfc ; myproxy-init -d -n -s myproxy.cern.ch -C ~/.globus/usercert.pem -y ~/.globus/userkey.pem -x -R '/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1' -x -Z '/DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1' -l efbf387e5cb8de285620e9734d4b82f2cd3bae33 -t 168 -c 720:00
+DEBUG 2025-08-06 22:17:39.532 UTC: 	 output : Your identity: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ramellar/CN=858721/CN=Ruth Amella Ranz
+Creating proxy ....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................... Done
+Proxy Verify OK
+Your proxy is valid until: Sat Sep  6 00:17:39 2025
+A proxy valid for 720 hours (30.0 days) for user efbf387e5cb8de285620e9734d4b82f2cd3bae33 now exists on myproxy.cern.ch.
+
+ error: 
+ retcode : 0
+DEBUG 2025-08-06 22:17:39.532 UTC: 	 Executing command :
+ myproxy-info -s myproxy.cern.ch -l efbf387e5cb8de285620e9734d4b82f2cd3bae33
+DEBUG 2025-08-06 22:17:39.889 UTC: 	 output : username: efbf387e5cb8de285620e9734d4b82f2cd3bae33
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=ramellar/CN=858721/CN=Ruth Amella Ranz
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  timeleft: 720:00:00  (30.0 days)
+
+ error: 
+ retcode : 0
+DEBUG 2025-08-06 22:17:39.889 UTC: 	 My-proxy delegated.
+DEBUG 2025-08-06 22:17:39.889 UTC: 	 Result of myproxy credential check:
+  Credential exists on myproxy: username: efbf387e5cb8de285620e9734d4b82f2cd3bae33  - validity: 30 days, 0:00:00
+DEBUG 2025-08-06 22:17:39.889 UTC: 	 Command use: submit
+DEBUG 2025-08-06 22:17:39.889 UTC: 	 Options use: ['crab_config/crab3_config_miniAOD.py']
+DEBUG 2025-08-06 22:17:39.890 UTC: 	 Encoded data for curl request: subresource=version
+DEBUG 2025-08-06 22:17:39.958 UTC: 	 CRABClient version: v3.250522
+DEBUG 2025-08-06 22:17:39.958 UTC: 	 Instance is prod
+DEBUG 2025-08-06 22:17:39.958 UTC: 	 Server base url is cmsweb.cern.ch
+DEBUG 2025-08-06 22:17:39.958 UTC: 	 Command api workflow
+DEBUG 2025-08-06 22:17:39.958 UTC: 	 Started submission
+DEBUG 2025-08-06 22:17:39.958 UTC: 	 Working on /grid_mnt/vol_home/llr/cms/amella/Run3_2025_tau/CMSSW_15_0_6/src/TagAndProbeIntegrated/TagAndProbe/Crab3WorkArea/crab_Muon1-2025D
+DEBUG 2025-08-06 22:17:39.958 UTC: 	 Encoded data for curl request: subresource=backendurls
+DEBUG 2025-08-06 22:17:40.306 UTC: 	 Loading required information from the environment
+DEBUG 2025-08-06 22:17:40.306 UTC: 	 Found CMSSW_15_0_6 for el9_amd64_gcc12 with base /grid_mnt/vol_home/llr/cms/amella/Run3_2025_tau/CMSSW_15_0_6
+DEBUG 2025-08-06 22:17:40.306 UTC: 	 Loading required information from the environment
+DEBUG 2025-08-06 22:17:40.306 UTC: 	 Found CMSSW_15_0_6 for el9_amd64_gcc12 with base /grid_mnt/vol_home/llr/cms/amella/Run3_2025_tau/CMSSW_15_0_6
+DEBUG 2025-08-06 22:17:40.306 UTC: 	 UNIQUE NAME: tarUUID 501b97b4-27f2-4e0c-bfc2-ce1d335ff15d 
+DEBUG 2025-08-06 22:17:40.306 UTC: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.workArea = '../Crab3WorkArea'
+config.General.requestName = 'Muon1-2025D'
+config.section_('JobType')
+config.JobType.pluginName = 'Analysis'
+config.JobType.allowUndistributedCMSSW = True
+config.JobType.psetName = '../tau_noTagAndProbe.py'
+config.section_('Data')
+config.Data.inputDataset = '/Muon1/Run2025D-PromptReco-v1/MINIAOD'
+config.Data.publication = False
+config.Data.outLFNDirBase = '/store/user/ramellar/tau_run3_2025'
+config.Data.splitting = 'EventAwareLumiBased'
+config.Data.lumiMask = '../../DataCertificationJsons/Collisions25_13p6TeV_Latest.json'
+config.Data.unitsPerJob = 25000
+config.Data.runRange = '394393-395103'
+config.Data.allowNonValidInputDataset = True
+config.Data.inputDBS = 'global'
+config.Data.totalUnits = -1
+config.section_('Site')
+config.Site.storageSite = 'T2_FR_GRIF_LLR'
+
+DEBUG 2025-08-06 22:17:40.306 UTC: 	 self.config.JobType.psetName: ../tau_noTagAndProbe.py
+ERROR 2025-08-06 22:17:40.307 UTC: 	 
+Cannot find CMSSW configuration file ../tau_noTagAndProbe.py in /grid_mnt/vol_home/llr/cms/amella/Run3_2025_tau/CMSSW_15_0_6/src/TagAndProbeIntegrated/TagAndProbe/test
+ERROR 2025-08-06 22:17:40.307 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250522.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250522.00/bin/crab.py", line 142, in __call__
+    returnDict = self.cmd()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250522.00/lib/CRABClient/Commands/submit.py", line 108, in __call__
+    dummy_inputfiles, jobconfig = plugjobtype.run(filecacheurl)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250522.00/lib/CRABClient/JobType/Analysis.py", line 92, in run
+    self.cmsswCfg = CMSSWConfig(config=self.config, logger=self.logger,
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250522.00/lib/CRABClient/JobType/CMSSWConfig.py", line 44, in __init__
+    raise ConfigurationException(msg)
+CRABClient.ClientExceptions.ConfigurationException: 
+Cannot find CMSSW configuration file ../tau_noTagAndProbe.py in /grid_mnt/vol_home/llr/cms/amella/Run3_2025_tau/CMSSW_15_0_6/src/TagAndProbeIntegrated/TagAndProbe/test
