@@ -5,8 +5,8 @@ from Configuration.StandardSequences.Eras import eras
 from Configuration.AlCa.autoCond import autoCond
 
 isMC=False
-doReEmulation=False
-# CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_cfi"
+doReEmulation=True
+CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_3_cfi"
 # CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_newTauIsoLUT_cfi"
 # CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_Iso_eff0p7_18_27_LUT_cfi"
 
@@ -104,12 +104,15 @@ if doReEmulation:
         from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAW 
         print(L1TReEmulFromRAW)
         process = L1TReEmulFromRAW(process)
+        process.load('SimCalorimetry.HcalTrigPrimProducers.hcaltpdigi_cff')
+        process.HcalTPGCoderULUT.nPedWidthsForZS = cms.double(0)
+        process.HcalTPGCoderULUT.overrideDBnPedWidthsForZS = cms.bool(True)
     else:
         from L1Trigger.Configuration.customiseReEmul import L1TReEmulMCFromRAW
         process = L1TReEmulMCFromRAW(process) 
         from L1Trigger.Configuration.customiseUtils import L1TTurnOffUnpackStage2GtGmtAndCalo 
         process = L1TTurnOffUnpackStage2GtGmtAndCalo(process)
-    # process.load( CALOPARAMS )
+    process.load( CALOPARAMS )
     process.p = cms.Path(
         process.TAndPseq +
         process.RawToDigi +
