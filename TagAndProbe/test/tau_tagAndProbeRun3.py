@@ -101,12 +101,14 @@ process.p = cms.Path(
 if doReEmulation:
     process.schedule = cms.Schedule()
     if not isMC:
-        from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAW 
-        print(L1TReEmulFromRAW)
-        process = L1TReEmulFromRAW(process)
         process.load('SimCalorimetry.HcalTrigPrimProducers.hcaltpdigi_cff')
         process.HcalTPGCoderULUT.nPedWidthsForZS = cms.double(0)
         process.HcalTPGCoderULUT.overrideDBnPedWidthsForZS = cms.bool(True)
+        from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAWsimHcalTP
+        process = L1TReEmulFromRAWsimHcalTP(process)
+        print("From Re-emulation", L1TReEmulFromRAWsimHcalTP)
+        # from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAW 
+        # process = L1TReEmulFromRAW(process)
     else:
         from L1Trigger.Configuration.customiseReEmul import L1TReEmulMCFromRAW
         process = L1TReEmulMCFromRAW(process) 
