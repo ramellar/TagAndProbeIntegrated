@@ -104,7 +104,7 @@ if doReEmulation:
         from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAWsimHcalTP
         process = L1TReEmulFromRAWsimHcalTP(process)
         process.load('SimCalorimetry.HcalTrigPrimProducers.hcaltpdigi_cff')
-        process.HcalTPGCoderULUT.nPedWidthsForZS = cms.double(3)
+        process.HcalTPGCoderULUT.nPedWidthsForZS = cms.double(0)
         process.HcalTPGCoderULUT.overrideDBnPedWidthsForZS = cms.bool(True)
         print("From Re-emulation", L1TReEmulFromRAWsimHcalTP)
         # from L1Trigger.Configuration.customiseReEmul import L1TReEmulFromRAW 

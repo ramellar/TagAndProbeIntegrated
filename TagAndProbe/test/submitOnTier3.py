@@ -44,7 +44,7 @@ parser.add_option("--globalTag",  dest="globalTag",    type=str, default=None, h
 
 infile_base  = os.getcwd()+'/../'
 user = infile_base.split('/')[5]
-outfile_base = "/data_CMS/cms/"+user+"/Run3_2025/"
+outfile_base = "/data_CMS/cms/"+user+"/Run3_2026/"
 
 ###########
 
