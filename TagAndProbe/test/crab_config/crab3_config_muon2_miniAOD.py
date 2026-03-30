@@ -13,7 +13,7 @@ config.JobType.psetName = 'tau_tagAndProbeRun3.py'
 config.JobType.allowUndistributedCMSSW = True
 
 config.section_("Data")
-config.Data.inputDataset = '/Muon0/Run2026B-PromptReco-v1/MINIAOD'
+config.Data.inputDataset = '/Muon2/Run2026B-PromptReco-v1/MINIAOD'
 # config.Data.secondaryInputDataset= '/DYto2Tau-4Jets_Bin-MLL-50_Fil-MuTauh_TuneCP5_13p6TeV_madgraphMLM-pythia8/Run3Winter25Digi-142X_mcRun3_2025_realistic_v7-v2/GEN-SIM-RAW'
 
 config.Data.inputDBS = 'global'

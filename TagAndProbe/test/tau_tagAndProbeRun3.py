@@ -5,7 +5,7 @@ from Configuration.StandardSequences.Eras import eras
 from Configuration.AlCa.autoCond import autoCond
 
 isMC=False
-doReEmulation=True
+doReEmulation=False
 CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_3_cfi"
 # CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_newTauIsoLUT_cfi"
 # CALOPARAMS = "L1Trigger.L1TCalorimeter.caloParams_2025_v0_2_Iso_eff0p7_18_27_LUT_cfi"
