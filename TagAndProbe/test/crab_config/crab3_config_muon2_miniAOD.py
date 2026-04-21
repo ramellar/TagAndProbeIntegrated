@@ -4,7 +4,7 @@ from WMCore.Configuration import Configuration
 config = Configuration()
 
 config.section_("General")
-config.General.requestName = 'Muon0-2026B'
+config.General.requestName = 'Muon2-2026B'
 config.General.workArea = 'Crab3WorkArea'
 
 config.section_("JobType")
